@@ -44,7 +44,7 @@ body{
 	background-color:#67cfde
 }
 
-#positionTbl{
+.positionTblClass{
 	border-spacing: 1;
   border-collapse: none;
 	border: 1;

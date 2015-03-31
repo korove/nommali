@@ -1,8 +1,8 @@
 
-<form action="upload.php" method="post" enctype="multipart/form-data">
-    Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
+<form name="form1" method="post" action="save_upload.php" enctype="multipart/form-data">
+Name : <input type="text" name="txtName"><br>
+VDO Clip : <input type="file" name="filUpload"><br>
+<input name="btnSubmit" type="submit" value="Submit">
 </form>
 
 <?php
