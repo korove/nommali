@@ -27,7 +27,7 @@
 
 <?php 
 	if($hasPosition){
-		echo '<table id="positionTbl" border="1">';
+		echo '<table id="positionTbl" >';
 		echo '<tr>';
 		echo '<th>';
         echo "ตำแหน่ง";
@@ -44,6 +44,18 @@
 	    echo '</table>';
 	}
 ?>
+
+<script type=>
+ 
+jQuery( document ).ready(function() {
+ 
+    jQuery( "#positionTbl" ).click(function( event ) {
+ 		 $("div").addClass("positionTblClass");
+ 
+    });
+ 
+}); 
+</script>			
 
 <?php
 	include './database/closeDb.php';
