@@ -46,6 +46,6 @@ body{
 
 .positionTblClass{
 	border-spacing: 1;
-  border-collapse: none;
+  	border-collapse: none;
 	border: 1;
 }

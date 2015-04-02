@@ -26,8 +26,11 @@
 <h1>ร่วมงานกับเรา</h1>
 
 <?php 
+	echo '<p style="color:red;">555';
+	echo '</p>';
+
 	if($hasPosition){
-		echo '<table id="positionTbl" >';
+		echo '<table id="positionTbl" border="1" >';
 		echo '<tr>';
 		echo '<th>';
         echo "ตำแหน่ง";
@@ -45,14 +48,19 @@
 	}
 ?>
 
-<script type=>
+<script>
  
 jQuery( document ).ready(function() {
+ 	
+	// window.onload = function() {
+	// 	document.getElementById('positionTbl').className = 'positionTblClass';
+	// };
+
+ //    jQuery( "#positionTbl" ).load(function( event ) {
+ //    	alert('5555555555555');
+ // 		 $("div").addClass("positionTblClass");
  
-    jQuery( "#positionTbl" ).click(function( event ) {
- 		 $("div").addClass("positionTblClass");
- 
-    });
+ //    });
  
 }); 
 </script>			
