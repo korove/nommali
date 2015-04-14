@@ -41,11 +41,53 @@ clear: left;
 
 body{
 	margin: 0 10%;
-	background-color:#67cfde
+	background-color:#67cfde;
 }
 
 .positionTblClass{
-	border-spacing: 1;
-  	border-collapse: none;
-	border: 1;
+	width: 300px;
+	text-align: center;
+}
+
+#frmLogin{
+	width:300px;
+}
+
+#frmLogin .label{
+	clear: left;
+	float:left;
+	margin-right: 10px;
+	text-align:right;
+	vertical-align: middle;
+}
+
+#frmLogin .input{
+	clear: right;
+	float:right;
+	vertical-align: middle;
+}
+
+.rowLogin{
+	display:block;
+}
+
+.colLogin{
+	display:inline;
+	width:300px;
+	margin-right: 5px;
+}
+
+#frmLogin3 td{
+	padding:2px;
+}
+
+#frmLogin3 label{
+	color:black;
+}
+
+
+#frmLogin3 input{
+	/*float:right;*/
+	float:left;
+	width: 160px;
 }

@@ -26,13 +26,11 @@
 <h1>ร่วมงานกับเรา</h1>
 
 <?php 
-	echo '<p style="color:red;">555';
-	echo '</p>';
 
 	if($hasPosition){
-		echo '<table id="positionTbl" border="1" >';
+		echo '<table id="positionTbl" border="1" class="positionTblClass">';
 		echo '<tr>';
-		echo '<th>';
+		echo '<th style="text-align:center;">';
         echo "ตำแหน่ง";
         echo '</th>';
         echo '</tr>';

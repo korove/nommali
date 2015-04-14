@@ -1,17 +1,36 @@
-<?php session_start(); ?>
+<?php session_start(); 
+	include('./include/function.php');
+?>
+<?php 
+
+	// $link = mysqli_connect("local", "root", "add", "dff");
+	// if(!$link){
+	// 	exit("exit");
+	// }
+
+	// $link = @mysqli_connect("local", "root", "add", "dff")
+	// 		or die("cannot connect");
+
+	// $link = @mysqli_connect("local", "root", "add", "dff")
+	// 		or die(mysqli_connect_error());
+
+ ?>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Admin page</title>
+	<title>Admin page</title>
+	<link rel="stylesheet" href="./bootstrap-3.3.4/dist/css/bootstrap.min.css">
 
-  <link rel="stylesheet" href="./bootstrap-3.3.4/dist/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="./bootstrap-3.3.4/dist/css/bootstrap-theme.min.css">
+	<script src="./js/jquery-2.1.1.min.js"></script>
+	<script src="./js/jquery.blockUI.js"></script>
+	<script src="./js/jquery.form.min.js"></script>
+	<script src="./bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/home.css">
+	
+	<script src="./js/homeScript.js"></script>
 
-<!-- Optional theme -->
-  <link rel="stylesheet" href="./bootstrap-3.3.4/dist/css/bootstrap-theme.min.css">
-  <script src="./bootstrap-3.3.4/dist/js/jquery1.11.js"></script>
-  <script src="./bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="./css/home.css">
-  
 </head>
 
 <body>
@@ -25,8 +44,86 @@
 
 
 	<div id="content">
-	
+		<?php echo __DIR__ ?><br>
+		<?php echo __FILE__ ?>
+		<div style="width:600px;">
+			<div id="msgLogin"></div>
+			<fieldset><legend>Log In</legend>
+				<form id="frmLogin3">
+					<table width="270px;">
+						<tr>
+							<td>
+								<label for="userLogin" class="label">User Name</label>							
+							</td>
+							<td>
+								<input type="text" name="userLogin" id="userLogin"
+									class="input">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="password" class="label">Password</label>
+							</td>
+							<td>
+								<input type="password" name="password" id="password"
+									class="input">
+							</td>
+						</tr>
+						<tr>
+							<td>
+							</td>
+							<td>
+								<button id="btnLogin" style="float:left;">เข้าสู่ระบบ</button>
+							</td>
+						</tr>
+
+					</table>
+				</form>	
+			</fieldset>
+		</div>
+
+		<div style="width:600px;">
+			<fieldset><legend>Log In</legend>
+				<form id="frmLogin">
+						<label for="userLogin" class="label">User Name</label>
+						<input type="text" name="userLogin" id="userLogin"
+							class="input">
+
+						<label for="password" class="label">Password</label>
+						<input type="password" name="password" id="password"
+							class="input">
+				</form>	
+			</fieldset>
+		</div>
+
+		<div style="width:600px;">
+			<fieldset><legend>Log In</legend>
+				<form id="frmLogin2">
+					<div class="rowLogin">
+						<div class="colLogin">
+							<label for="userLogin" class="label">User Name</label>							
+						</div>
+						<input type="text" name="userLogin" id="userLogin"
+							class="input">
+					</div>
+					<div class="rowLogin">
+						<div class="colLogin">
+							<label for="password" class="label">Password</label>
+						</div>
+						<input type="password" name="password" id="password"
+							class="input">
+					</div>
+				</form>	
+			</fieldset>
+		</div>
+		
+
+		
 		<?php
+			$temp = "<script>location.href('http://www.hacked.com')</script>";
+			echo '<br/>'. validateInputData($temp);
+			//echo '<br/>'. filter_var($temp, FILTER_SANITIZE_STRING);
+
 
 			$page = 'homeContent';
 			if(isset($_GET['page'])){
@@ -44,29 +141,13 @@
 
 	</div>
 
+
+
 	<div id="footer">
 		<?php include 'footer.php'; ?>
 	</div>
 
-
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-	      </div>
-	      <div class="modal-body">
-	        ...
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+	<?php include './modal/homeModal.php'; ?>
 
 </body>
 
