@@ -46,7 +46,7 @@ $(function(){
 				$('#welcomeAdmin').html(result.msgWelcome);
 				if(result.msgWelcome !== ""){
 					var logoutBtn = '<form action="/nommali/login/logout.php">';
-					logoutBtn += '<input type="submit" value="Logout">';
+					logoutBtn += '<input type="submit" value="ออกจากระบบ">';
 					logoutBtn += '</form>';
 					$('#logout').html(logoutBtn);
 				}

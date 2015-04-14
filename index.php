@@ -64,7 +64,7 @@
 			<?php 
 				if(isset($_SESSION['sess_admin'])){
 					echo '<form action="/nommali/login/logout.php">';
-					echo 	'<input type="submit" value="Logout">';
+					echo 	'<input type="submit" value="ออกจากระบบ">';
 					echo '</form>';
 				}
 			?>
