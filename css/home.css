@@ -44,6 +44,10 @@ body{
 	background-color:#67cfde;
 }
 
+.errorMsg{
+	color:red;
+}
+
 .positionTblClass{
 	width: 300px;
 	text-align: center;

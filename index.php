@@ -30,7 +30,15 @@
 	<link rel="stylesheet" type="text/css" href="./css/home.css">
 	
 	<script src="./js/homeScript.js"></script>
-
+	<script>
+		// $(function(){
+		// 	var welcomeAdminPage=location.pathname+'admin/welcomeAdmin.php';
+		// 	// alert(welcomeAdminPage);
+		// 	$('#welcomeAdmin').load(welcomeAdminPage, function() {
+		// 	    //$(this).fadeIn();
+		// 	});
+		// });
+	</script>
 </head>
 
 <body>
@@ -44,6 +52,26 @@
 
 
 	<div id="content">
+		<div id="welcomeAdmin">
+			<?php 
+				if(isset($_SESSION['sess_admin'])){
+					echo "ยินดีต้อนรับคุณ {$_SESSION['sess_admin']}";
+				}
+			?>
+		</div>
+
+		<div id="logout">
+			<?php 
+				if(isset($_SESSION['sess_admin'])){
+					echo '<form action="/nommali/login/logout.php">';
+					echo 	'<input type="submit" value="Logout">';
+					echo '</form>';
+				}
+			?>
+			
+		</div>
+
+		<hr>
 		<?php echo __DIR__ ?><br>
 		<?php echo __FILE__ ?>
 		<div style="width:600px;">
@@ -81,42 +109,6 @@
 				</form>	
 			</fieldset>
 		</div>
-
-		<div style="width:600px;">
-			<fieldset><legend>Log In</legend>
-				<form id="frmLogin">
-						<label for="userLogin" class="label">User Name</label>
-						<input type="text" name="userLogin" id="userLogin"
-							class="input">
-
-						<label for="password" class="label">Password</label>
-						<input type="password" name="password" id="password"
-							class="input">
-				</form>	
-			</fieldset>
-		</div>
-
-		<div style="width:600px;">
-			<fieldset><legend>Log In</legend>
-				<form id="frmLogin2">
-					<div class="rowLogin">
-						<div class="colLogin">
-							<label for="userLogin" class="label">User Name</label>							
-						</div>
-						<input type="text" name="userLogin" id="userLogin"
-							class="input">
-					</div>
-					<div class="rowLogin">
-						<div class="colLogin">
-							<label for="password" class="label">Password</label>
-						</div>
-						<input type="password" name="password" id="password"
-							class="input">
-					</div>
-				</form>	
-			</fieldset>
-		</div>
-		
 
 		
 		<?php
