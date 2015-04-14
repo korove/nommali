@@ -4,16 +4,8 @@ $(function(){
 
 	$('#btnLogin').click(function(event){
 		event.preventDefault();
-		// alert('hostname:'+location.hostname);
-		// alert('pathname:'+location.pathname);
-		// alert('href:'+location.href);
-		// var url=location.pathname+'login/login.php';
 		var url='/nommali/login/login.php';
-		// url = 'login.php';
-		// var data="?name=555"
 		var data=$('#frmLogin3').serializeArray();
-		// var data=$('#frmLogin3').serialize();
-		// alert('url='+url)
 		$.ajax({
 			// url:'../login/login.php',
 			url:url,
@@ -53,5 +45,21 @@ $(function(){
 			}
 		});
 	});
+
+	$(".inputNumber").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+             // Allow: Ctrl+A
+            (e.keyCode == 65 && e.ctrlKey === true) || 
+             // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
 
 });

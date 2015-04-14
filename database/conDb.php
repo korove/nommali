@@ -1,8 +1,9 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
-$dbname = "nom_tra_mali";
+$password = "abc456";
+$dbname = "nommali";
+// $dbname = "nom_tra_mali";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -11,7 +12,12 @@ $conn->set_charset("utf8");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-echo "Connected successfully";
+
+// echo "Connected successfully";
+
+// $conn = @mysqli_connect($servername, $username, $password, $dbname)
+// 		or die(mysqli_connect_error());
+// echo "Connected successfully";
 
 
 // ###################### INSERT ######################

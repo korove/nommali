@@ -20,8 +20,17 @@ float: left;
 
 }
 
+div#wrapper {
+padding: 0px;
+
+margin: 0;
+
+background: #BDBD00;
+
+}
+
 div#content {
-padding: 25px;
+padding: 30px;
 
 margin: 0;
 
@@ -89,9 +98,16 @@ body{
 	color:black;
 }
 
-
 #frmLogin3 input{
 	/*float:right;*/
 	float:left;
 	width: 160px;
+}
+
+.inputNumber{
+ 
+}
+
+#frmQueryJob td{
+	padding:2px;
 }

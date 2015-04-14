@@ -43,104 +43,104 @@
 
 <body>
 
-
-	<div id="header">
-		<div ><img src="logomali.jpg" style="width:120px;" /></div>
-		<?php include 'header.php'; ?>
-	</div>
-
-
-
-	<div id="content">
-		<div id="welcomeAdmin">
-			<?php 
-				if(isset($_SESSION['sess_admin'])){
-					echo "ยินดีต้อนรับคุณ {$_SESSION['sess_admin']}";
-				}
-			?>
+	<div id="wrapper">
+		<div id="header">
+			<div ><img src="logomali.jpg" style="width:120px;" /></div>
+			<?php include 'header.php'; ?>
 		</div>
 
-		<div id="logout">
-			<?php 
-				if(isset($_SESSION['sess_admin'])){
-					echo '<form action="/nommali/login/logout.php">';
-					echo 	'<input type="submit" value="ออกจากระบบ">';
-					echo '</form>';
-				}
-			?>
-			
-		</div>
-
-		<hr>
-		<?php echo __DIR__ ?><br>
-		<?php echo __FILE__ ?>
-		<div style="width:600px;">
-			<div id="msgLogin"></div>
-			<fieldset><legend>Log In</legend>
-				<form id="frmLogin3">
-					<table width="270px;">
-						<tr>
-							<td>
-								<label for="userLogin" class="label">User Name</label>							
-							</td>
-							<td>
-								<input type="text" name="userLogin" id="userLogin"
-									class="input">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label for="password" class="label">Password</label>
-							</td>
-							<td>
-								<input type="password" name="password" id="password"
-									class="input">
-							</td>
-						</tr>
-						<tr>
-							<td>
-							</td>
-							<td>
-								<button id="btnLogin" style="float:left;">เข้าสู่ระบบ</button>
-							</td>
-						</tr>
-
-					</table>
-				</form>	
-			</fieldset>
-		</div>
-
-		
-		<?php
-			$temp = "<script>location.href('http://www.hacked.com')</script>";
-			echo '<br/>'. validateInputData($temp);
-			//echo '<br/>'. filter_var($temp, FILTER_SANITIZE_STRING);
 
 
-			$page = 'homeContent';
-			if(isset($_GET['page'])){
-				$page = $_GET['page'];
-			}
+		<div id="content">
+			<div id="welcomeAdmin">
+				<?php 
+					if(isset($_SESSION['sess_admin'])){
+						echo "ยินดีต้อนรับคุณ {$_SESSION['sess_admin']}";
+					}
+				?>
+			</div>
+
+			<div id="logout">
+				<?php 
+					if(isset($_SESSION['sess_admin'])){
+						echo '<form action="/nommali/login/logout.php">';
+						echo 	'<input type="submit" value="ออกจากระบบ">';
+						echo '</form>';
+					}
+				?>
+				
+			</div>
+
+			<hr>
+			<?php echo __DIR__ ?><br>
+			<?php echo __FILE__ ?>
+			<div style="width:600px;">
+				<div id="msgLogin"></div>
+				<fieldset><legend>Log In</legend>
+					<form id="frmLogin3">
+						<table width="270px;">
+							<tr>
+								<td>
+									<label for="userLogin" class="label">User Name</label>							
+								</td>
+								<td>
+									<input type="text" name="userLogin" id="userLogin"
+										class="input">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="password" class="label">Password</label>
+								</td>
+								<td>
+									<input type="password" name="password" id="password"
+										class="input">
+								</td>
+							</tr>
+							<tr>
+								<td>
+								</td>
+								<td>
+									<button id="btnLogin" style="float:left;">เข้าสู่ระบบ</button>
+								</td>
+							</tr>
+
+						</table>
+					</form>	
+				</fieldset>
+			</div>
 
 			
-			if (!empty($page)) {
-				$page .= '.php';
-				include($page);
-			} else {
-				include('homeContent.php');
-			}
-		?>
+			<?php
+				$temp = "<script>location.href('http://www.hacked.com')</script>";
+				echo '<br/>'. validateInputData($temp);
+				//echo '<br/>'. filter_var($temp, FILTER_SANITIZE_STRING);
 
+
+				$page = 'homeContent';
+				if(isset($_GET['page'])){
+					$page = $_GET['page'];
+				}
+
+				
+				if (!empty($page)) {
+					$page .= '.php';
+					include($page);
+				} else {
+					include('homeContent.php');
+				}
+			?>
+
+		</div>
+
+
+
+		<div id="footer">
+			<?php include 'footer.php'; ?>
+		</div>
+
+		<?php include './modal/homeModal.php'; ?>
 	</div>
-
-
-
-	<div id="footer">
-		<?php include 'footer.php'; ?>
-	</div>
-
-	<?php include './modal/homeModal.php'; ?>
-
 </body>
 
 </html>
