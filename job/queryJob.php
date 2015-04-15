@@ -40,8 +40,13 @@
 	if(!empty($jobActiveQuery) && $jobActiveQuery !== 'All') $stmt->bindValue(':activeFlg', $jobActiveQuery, PDO::PARAM_STR);
 	// $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 	// $stmt->bindValue(':name', $name, PDO::PARAM_STR);
-	$stmt->execute();
-	$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	try{
+		$stmt->execute();
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	} catch (PDOException $e) {
+	    echo 'Connection failed: ' . $e->getMessage();
+	    exit;
+	}
 
 
 	if(!empty($rows)){
@@ -54,6 +59,7 @@
 		echo "<th>รายละเอียด</th>";
 		echo "<th>จำนวนที่ต้องการ</th>";
 		echo "<th>การแสดงผล</th>";
+		echo "<th>แก้ไข</th>";
 		echo "</tr>";
 		foreach ($rows as $row) {
 		    // echo "{$row['jobname']}";
@@ -64,11 +70,16 @@
 
 			echo "<td>";
 ?>
-			<select id="jobActiveResult" name="jobActiveResult" disabled>
-			<?php echo "<option value='{$row['activeFlg']}'>".$mapActiveFlg[$row['activeFlg']]."</option>"; ?>
-			</select>
+			<!-- <select id="jobActiveResult" name="jobActiveResult" disabled> -->
+			<?php //echo "<option value='{$row['activeFlg']}'>".$mapActiveFlg[$row['activeFlg']]."</option>"; 
+				echo $mapActiveFlg[$row['activeFlg']];
+			?>
+			<!-- </select> -->
 <?php
 			echo "</td>";
+			echo "<td>"; ?>
+			<button class="btnEditJobRow">แก้ไข</button>
+<?php		echo "</td>";
 
 			echo "</tr>";
 

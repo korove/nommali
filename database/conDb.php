@@ -13,7 +13,13 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$conPDO = new PDO("mysql:host={$servername};dbname={$dbname};charset=utf8", $username, $password);
+try{
+	$conPDO = new PDO("mysql:host={$servername};dbname={$dbname};charset=utf8", $username, $password);
+	$conPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+	echo 'Error Code: ' . $e->getCode() . ',<br/>';
+    echo 'Connection failed: ' . $e->getMessage();
+}
 
 // echo "Connected successfully";
 

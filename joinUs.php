@@ -29,8 +29,21 @@
 	$jobAmount = "jobAmount1";
 	$jobActive = "Y";
 
-	$stmt->execute(array(':jobname' => $jobName, ':detail' => $jobDetail, ':amount' => $jobAmount, ':activeFlg' => $jobActive));
-	$affected_rows = $stmt->rowCount();*/
+	try {
+		$stmt->execute(array(':jobname' => $jobName, ':detail' => $jobDetail, ':amount' => $jobAmount, ':activeFlg' => $jobActive));
+	} catch (PDOException $e) {
+		//var_dump($e->errorInfo);
+		if($e->errorInfo[1] == 1062){
+			echo 'มีข้อมูลนี้อยู่แล้วในระบบ';
+		}else{
+			echo 'Error Code: ' . $e->getCode() . ',<br/>';
+		    echo 'Error: ' . $e->getMessage();
+		}
+	}
+	
+	$affected_rows = $stmt->rowCount();
+	echo '$affected_rows = ' . $affected_rows;*/
+	// ###################### End Insert PDO ######################
 
 	// ###################### Update PDO ######################
 	/*$sql = "update job set detail=:detail where jobname = :jobname";
@@ -155,7 +168,24 @@ $(function(){
 		});
 	});
 
+	$('body').on('click','#tblResultQueryJob .btnEditJobRow',function(){
+		// alert(111);
+		event.preventDefault();
+		// var msg = event.target.className;
+		// var msg = event.target.innerHTML;
+
+		// $('#frmAddJob td:first-child').css({'text-align':'right'});
+		var msg = $(this).parent().parent().children('td:first-child').html();
+
+		alert(msg);
+		// $(this)
+		
+	});
+
 });
+
+
+
 </script>
 
 <h1>ร่วมงานกับเรา</h1>
