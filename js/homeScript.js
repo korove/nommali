@@ -2,6 +2,12 @@
 $(function(){
 	$('#msgLogin').html(new Date());
 
+	/*$( "input[type=submit], a, button" )
+      .button()
+      .click(function( event ) {
+        event.preventDefault();
+      });*/
+
 	$('#btnLogin').click(function(event){
 		event.preventDefault();
 		var url='/nommali/login/login.php';

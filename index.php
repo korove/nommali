@@ -1,4 +1,10 @@
-<?php session_start(); 
+<?php 
+	session_start(); 
+	if(empty($_SESSION['sess_admin'])){
+		header("Refresh: 0; url=/nommali/portal.php");
+		exit;
+	}
+
 	include('./include/function.php');
 ?>
 <html>
@@ -9,12 +15,13 @@
 
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="./bootstrap-3.3.4/dist/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="./js/jquery-ui1.11.4.css">
+	<link rel="stylesheet" href="./jquery-ui-1.11.4.custom/jquery-ui.css">
+
 	<script src="./js/jquery-2.1.1.min.js"></script>
 	<script src="./js/jquery.blockUI.js"></script>
 	<script src="./js/jquery.form.min.js"></script>
 	<script src="./bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
-	<script src="./js/jquery-ui1.11.4.js"></script>
+	<script src="./jquery-ui-1.11.4.custom/jquery-ui.js"></script>
 	<link rel="stylesheet" type="text/css" href="./css/home.css">
 	
 	<script src="./js/homeScript.js"></script>
