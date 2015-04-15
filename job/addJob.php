@@ -10,28 +10,58 @@
 	$successMsg = "";
 	$arrOut = array('err'=>'','successMsg'=>'');
 
+	// $arrOut['err'] = "" == false ? 'Yes' : 'No';
+	// $arrOut['err'] = empty($_POST['xcv']) ? 'empty' : 'Not empty';
+
 	$jobName = "";
 	$jobDetail = "";
 	$jobAmount = "";
 	$jobActive = "Y";
 
-	if(!isset($_POST['jobNameAdd']) || empty($_POST['jobNameAdd'])){
+	if(empty($_POST['jobNameAdd'])){
 		$err .= "<li>กรุณากรอก 'ชื่อตำแหน่ง'</li>";
+	}else{
+		$jobName = validateInputData($_POST['jobNameAdd']);
+		if(empty($jobName)){
+			$err .= "<li>กรุณากรอก 'ชื่อตำแหน่ง'</li>";
+		}
 	}
-	if(!isset($_POST['jobDetailAdd']) || empty($_POST['jobDetailAdd'])){
+
+	if(empty($_POST['jobDetailAdd'])){
 		$err .= "<li>กรุณากรอก 'รายละเอียดงาน'</li>";
+	}else{
+		$jobDetail = validateInputData($_POST['jobDetailAdd']);
+		if(empty($jobDetail)){
+			$err .= "<li>กรุณากรอก 'รายละเอียดงาน'</li>";
+		}
 	}
-	if(!isset($_POST['jobAmountAdd']) || empty($_POST['jobAmountAdd'])){
+
+	if(empty($_POST['jobAmountAdd'])){
 		$err .= "<li>กรุณากรอก 'จำนวนที่รับ'</li>";
+	}else{
+		$jobAmount = validateInputData($_POST['jobAmountAdd']);
+		if(empty($jobAmount)){
+			$err .= "<li>กรุณากรอก 'จำนวนที่รับ'</li>";
+		}
 	}
 
 	if(!empty($err)){
 		$arrOut['err'] = "<ul>". $err ."</ul>";
 	}else{
-		$jobName = "";
-		$jobDetail = "";
-		$jobAmount = "";
-		$jobActive = "Y";
+		// No Error
+
+		if(empty($_POST['jobActiveAdd'])){
+			$jobActive = "Y";
+		}else{
+			$jobActive = validateInputData($_POST['jobActiveAdd']);
+			if(empty($jobActive)){
+				$jobActive = "Y";
+			}else{
+				$jobActive = $_POST['jobActiveAdd']);
+			}
+		}
+
+		
 	}
 	
 	// echo $err;
