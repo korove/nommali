@@ -117,9 +117,13 @@ body{
 }
 
 #tblResultQueryJob{
-	color:blue;
+	color:black;
 }
 
 #tblResultQueryJob th,td{
 	padding: 3px;
+}
+
+.alignRight{
+	text-align: right;
 }

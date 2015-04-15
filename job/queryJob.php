@@ -45,17 +45,33 @@
 
 
 	if(!empty($rows)){
+		$mapActiveFlg = array('Y'=>'แสดงแล้ว', 'N'=>'ยังไม่แสดง');
 		// echo 'not empty';
 		// echo "<table id='tblResultQueryJob' style='color:blue'>";
 		echo "<table id='tblResultQueryJob' border='1'>";
 		echo "<tr>";
 		echo "<th>ชื่อตำแหน่ง</th>";
+		echo "<th>รายละเอียด</th>";
+		echo "<th>จำนวนที่ต้องการ</th>";
+		echo "<th>การแสดงผล</th>";
 		echo "</tr>";
 		foreach ($rows as $row) {
 		    // echo "{$row['jobname']}";
 		    echo "<tr>";
 			echo "<td>{$row['jobname']}</td>";
+			echo "<td>{$row['detail']}</td>";
+			echo "<td class='alignRight'>{$row['amount']}</td>";
+
+			echo "<td>";
+?>
+			<select id="jobActiveResult" name="jobActiveResult" disabled>
+			<?php echo "<option value='{$row['activeFlg']}'>".$mapActiveFlg[$row['activeFlg']]."</option>"; ?>
+			</select>
+<?php
+			echo "</td>";
+
 			echo "</tr>";
+
 		}
 		echo "</table>";
 	}else{

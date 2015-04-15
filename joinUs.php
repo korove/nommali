@@ -179,8 +179,8 @@ $(function(){
 					<td>
 						<select id="jobActiveQuery" name="jobActiveQuery">
 						  <option value="All" selected>เลือกทั้งหมด</option>
-						  <option value="Y">ที่แสดงแล้ว</option>
-						  <option value="N">ที่ยังไม่แสดง</option>
+						  <option value="Y">แสดงแล้ว</option>
+						  <option value="N">ยังไม่แสดง</option>
 						</select>
 					</td>
 					<!-- <td><input type="text" name="jobAmount" id="jobAmount" 
