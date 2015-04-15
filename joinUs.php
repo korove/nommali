@@ -66,12 +66,8 @@ $(function(){
 			type:'post',
 			data:data,
 			beforeSend:function(){
-				$('#frmQueryJob').block();
-				// $.blockUI({
-				// 	message:'<h3>Loading</h3>',
-				// 	css:{color:'red', background:'yellow',
-				// 		 border:'none'}
-				// });
+				// $('#frmQueryJob').block();
+				$.blockUI();
 			},
 			error:function(xhr, textStatus){
 				// alert('xhr:'+ xhr +', textStatus:'+textStatus);
@@ -80,11 +76,51 @@ $(function(){
 				$('#errQueryJob').html('<h4 style="color:red;">msg:' + msg+"</h4>");
 			},
 			complete:function(){
-				$('#frmQueryJob').unblock();
-				// $.unblockUI();	
+				// $('#frmQueryJob').unblock();
+				$.unblockUI();	
 			},
 			success:function(result){
 				$('#resultQueryJob').html(result);
+			}
+		});
+	});
+
+	$('#btnPrepareAddJob').click(function(event){
+		event.preventDefault();
+		$('#divPrepareAddJob').css('display', 'block');
+	});
+
+	$('#frmAddJob td:first-child').css({'text-align':'right'});
+
+	$('#btnAddJob').click(function(event){
+		event.preventDefault();
+
+		var url='/nommali/job/addJob.php';
+		var data=$('#frmAddJob').serializeArray();
+
+		$.ajax({
+			url:url,
+			type:'post',
+			data:data,
+			dataType:'json',
+			beforeSend:function(){
+				// $('#frmQueryJob').block();
+				$.blockUI();
+			},
+			error:function(xhr, textStatus){
+				// alert('xhr:'+ xhr +', textStatus:'+textStatus);
+				var msg = 'xhr: ' + xhr.status;
+				//alert(msg);
+				$('#errAddJob').html('<h4 style="color:red;">msg:' + msg+"</h4>");
+			},
+			complete:function(){
+				// $('#frmQueryJob').unblock();
+				$.unblockUI();	
+			},
+			success:function(result){
+				// $('#errAddJob').html(result);
+				$('#errAddJob').html(result.err);
+				$('#divResultAddJob').html(result.successMsg);
 			}
 		});
 	});
@@ -96,28 +132,83 @@ $(function(){
 <div id="errQueryJob" class="errorMsg">
 	
 </div>
-<fieldset>
-	<legend>ค้นหาตำแหน่ง</legend>
-	<form id="frmQueryJob" style="margin-top:-7px;">
-		<table >
-			<tr>
-				<td>ชื่อตำแหน่ง</td>
-				<td>จำนวน</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td><input type="text" name="jobName" id="jobName" 
-					   style="width:200px;" maxlength="255"></td>
-				<td><input type="text" name="jobAmount" id="jobAmount" 
-					   style="width:100px;"	class="inputNumber" maxlength="2"></td>
-				<td><button id="btnQueryJob">ค้นหา</button></td>
-			</tr>
-		</table>
-	</form>
-</fieldset>
+<div id="divQueryJob">
+	<fieldset>
+		<legend>ค้นหาตำแหน่ง</legend>
+		<form id="frmQueryJob" style="margin-top:-7px;">
+			<table >
+				<tr>
+					<td>ชื่อตำแหน่ง</td>
+					<td>จำนวน</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="jobName" id="jobName" 
+						   style="width:200px;" maxlength="255"></td>
+					<td><input type="text" name="jobAmount" id="jobAmount" 
+						   style="width:100px;"	class="inputNumber" maxlength="2"></td>
+					<td><button id="btnQueryJob">ค้นหา</button></td>
+				</tr>
+			</table>
+		</form>
+		
+	</fieldset>
+</div>
 <div id="resultQueryJob">
 	
 </div>
+
+<div id="divAddJob" style="position:relative;left:2px;">
+	<button id="btnPrepareAddJob" >เพิ่มตำแหน่ง</button>
+</div>
+
+<div id="divPrepareAddJob" style="position:relative;left:2px;">
+	<div id="errAddJob" style="color:red;"></div>
+	<fieldset>
+		<legend>เพิ่มตำแหน่ง</legend>
+		<form id="frmAddJob" style="margin-top:-7px;">
+			<table >
+				<tr>
+					<td>ชื่อตำแหน่ง</td>
+					<td><input type="text" name="jobNameAdd" id="jobNameAdd" 
+						   style="width:200px;" maxlength="255"></td>
+				</tr>
+
+				<tr>
+					<td>รายละเอียดงาน</td>
+					<td><textarea name="jobDetailAdd" id="jobDetailAdd" cols="70" rows="7"></textarea></td>
+				</tr>
+
+				<tr>
+					<td>จำนวนที่รับ</td>
+					<td><input type="text" name="jobAmountAdd" id="jobAmountAdd" 
+						   style="width:100px;"	class="inputNumber" maxlength="2"></td>
+				</tr>
+
+				<tr>
+					<td>เปิดให้แสดง</td>
+					<td>
+						<select id="jobActiveAdd">
+						  <option value="Y" selected>แสดงทันที</option>
+						  <option value="N">ยังไม่ต้องแสดง</option>
+						</select>
+					</td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td><button id="btnAddJob">เพิ่ม</button></td>
+				</tr>
+			</table>
+		</form>
+		
+	</fieldset>
+</div>
+
+<div id="divResultAddJob">
+	
+</div>
+
 
 <?php 
 
@@ -139,24 +230,6 @@ $(function(){
 	 //    echo '</table>';
 	}
 ?>
-
-
-
-<script>
-jQuery( document ).ready(function() {
- 	
-	// window.onload = function() {
-	// 	document.getElementById('positionTbl').className = 'positionTblClass';
-	// };
-
- //    jQuery( "#positionTbl" ).load(function( event ) {
- //    	alert('5555555555555');
- // 		 $("div").addClass("positionTblClass");
- 
- //    });
- 
-}); 
-</script>			
 
 <?php
 	include './database/closeDb.php';

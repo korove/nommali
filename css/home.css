@@ -109,5 +109,9 @@ body{
 }
 
 #frmQueryJob td{
-	padding:2px;
+	padding: 2px;
+}
+
+#frmAddJob td{
+	padding: 3px;
 }
