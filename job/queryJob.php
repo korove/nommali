@@ -53,7 +53,8 @@
 		$mapActiveFlg = array('Y'=>'แสดง', 'N'=>'ไม่แสดง');
 		// echo 'not empty';
 		// echo "<table id='tblResultQueryJob' style='color:blue'>";
-		echo "<table id='tblResultQueryJob' border='1'>";
+		// echo "<table id='tblResultQueryJob' border='1'>";
+		echo "<table id='tblResultQueryJob'>";
 		echo "<tr>";
 		echo "<th>ชื่อตำแหน่ง</th>";
 		echo "<th>รายละเอียด</th>";
