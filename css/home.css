@@ -127,3 +127,12 @@ body{
 .alignRight{
 	text-align: right;
 }
+
+.readonlyStyle{
+	
+}
+
+input.readonlyStyle {
+	background-color: expression(( this . disabled == true) ? '#b9b8bb' :  
+		( this . readOnly == true ) ?   '#b9b8bb' :   '' );
+}

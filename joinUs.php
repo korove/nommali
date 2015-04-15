@@ -94,7 +94,8 @@
 
 <script>
 $(function(){
-
+	var jobNameForEdit = "";
+	var editJobDone = false;
 	$('#btnQueryJob').click(function(event){
 		event.preventDefault();
 
@@ -215,6 +216,7 @@ $(function(){
 		$('#divEditJob').css({'display':'block'});
 		var jsonData = {jobName:jobName, jobDetail:jobDetail, jobAmount:jobAmount,
 						jobActiveFlg:jobActiveFlg};
+		jobNameForEdit = jobName;
 		$('#jobNameEdit').val(jobName);
 		$('#jobDetailEdit').val(jobDetail);
 		$('#jobAmountEdit').val(jobAmount);
@@ -276,7 +278,8 @@ $(function(){
 				<tr>
 					<td>ชื่อตำแหน่ง</td>
 					<td><input type="text" name="jobNameEdit" id="jobNameEdit" 
-						   style="width:200px;" maxlength="255"></td>
+							class="readonlyStyle" disabled="true" 
+						   style="width:200px;" maxlength="255" readonly="true"></td>
 				</tr>
 
 				<tr>
