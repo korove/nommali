@@ -6,7 +6,7 @@
 	require_once("{$base_dir}database{$ds}conDb.php");
 	require_once("{$base_dir}include{$ds}function.php");
 
-	$err = "test4";
+	$err = "";
 	$successMsg = "";
 	$arrOut = array('err'=>'','successMsg'=>'');
 
@@ -57,13 +57,21 @@
 			if(empty($jobActive)){
 				$jobActive = "Y";
 			}else{
-				$jobActive = $_POST['jobActiveAdd']);
+				$jobActive = $_POST['jobActiveAdd'];
 			}
 		}
 
+		$sql  = "insert into job(jobname,detail,amount,activeFlg) ";
+		$sql .=	" values(:jobname,:detail,:amount,:activeFlg)";
 		
+		$stmt = $conPDO->prepare($sql);
+
+		$stmt->execute(array(':jobname' => $jobName, ':detail' => $jobDetail, ':amount' => $jobAmount, ':activeFlg' => $jobActive));
+		$affected_rows = $stmt->rowCount();
+
+		$arrOut['successMsg'] = 'affected_rows = ' . $affected_rows;
 	}
-	
+
 	// echo $err;
 	echo json_encode($arrOut);
 ?>

@@ -19,6 +19,33 @@
 	// }
 	// End ###################### Query ######################
 
+	// ###################### Insert PDO ######################
+	/*$sql = "insert into job(jobname,detail,amount,activeFlg) " .
+			" values(:jobname,:detail,:amount,:activeFlg)";
+	$stmt = $conPDO->prepare($sql);
+
+	$jobName = "jobname1";
+	$jobDetail = "jobdetail1";
+	$jobAmount = "jobAmount1";
+	$jobActive = "Y";
+
+	$stmt->execute(array(':jobname' => $jobName, ':detail' => $jobDetail, ':amount' => $jobAmount, ':activeFlg' => $jobActive));
+	$affected_rows = $stmt->rowCount();*/
+
+	// ###################### Update PDO ######################
+	/*$sql = "update job set detail=:detail where jobname = :jobname";
+			
+	$stmt = $conPDO->prepare($sql);
+
+	$jobName = "jobname1";
+	$jobDetail = "test";
+	$jobAmount = "23";
+	$jobActive = "Y";
+
+	$stmt->execute(array(':jobname' => $jobName, ':detail' => $jobDetail));
+	$affected_rows = $stmt->rowCount();*/
+
+
 	// ###################### Query ######################
 	$hasPosition = false;
 	$paramTemp = 1;
@@ -97,6 +124,9 @@ $(function(){
 
 		var url='/nommali/job/addJob.php';
 		var data=$('#frmAddJob').serializeArray();
+		/*$.each(data, function(i, field){
+	        $("#errAddJob").append(field.name + ":" + field.value + ", ");
+	    });*/
 
 		$.ajax({
 			url:url,
@@ -139,14 +169,14 @@ $(function(){
 			<table >
 				<tr>
 					<td>ชื่อตำแหน่ง</td>
-					<td>จำนวน</td>
+					<!-- <td>จำนวน</td> -->
 					<td></td>
 				</tr>
 				<tr>
 					<td><input type="text" name="jobName" id="jobName" 
 						   style="width:200px;" maxlength="255"></td>
-					<td><input type="text" name="jobAmount" id="jobAmount" 
-						   style="width:100px;"	class="inputNumber" maxlength="2"></td>
+					<!-- <td><input type="text" name="jobAmount" id="jobAmount" 
+						   style="width:100px;"	class="inputNumber" maxlength="2"></td> -->
 					<td><button id="btnQueryJob">ค้นหา</button></td>
 				</tr>
 			</table>
@@ -188,7 +218,7 @@ $(function(){
 				<tr>
 					<td>เปิดให้แสดง</td>
 					<td>
-						<select id="jobActiveAdd">
+						<select id="jobActiveAdd" name="jobActiveAdd">
 						  <option value="Y" selected>แสดงทันที</option>
 						  <option value="N">ยังไม่ต้องแสดง</option>
 						</select>
