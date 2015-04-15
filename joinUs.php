@@ -171,17 +171,61 @@ $(function(){
 	$('body').on('click','#tblResultQueryJob .btnEditJobRow',function(){
 		// alert(111);
 		event.preventDefault();
+
+		var mapJobActive = '{"แสดง":"Y","ไม่แสดง":"N"}';
+		var mapJobActiveObj = JSON.parse(mapJobActive);
+		// alert(mapJobActiveObj['แสดง']);
 		// var msg = event.target.className;
 		// var msg = event.target.innerHTML;
+		// var msg = $(this).parent().parent().children('td:first-child').html();
 
-		// $('#frmAddJob td:first-child').css({'text-align':'right'});
-		var msg = $(this).parent().parent().children('td:first-child').html();
+		$currentTr = $(this).parent().parent();
+		$tdChilds = $currentTr.children();
+		var jobName = "";
+		var jobDetail = "";
+		var jobAmount = "";
+		var jobActiveFlg = "";
+		var tdEdit = "";
+		var tdEditInner = "";
 
-		alert(msg);
-		// $(this)
-		
+		$.each($tdChilds, function(index,item){
+			if(index == 0){
+				jobName = item.innerHTML;
+				var jobNameHtml = "";
+				//alert(jobName);
+			}else if(index == 1){
+				jobDetail = item.innerHTML;
+			}else if(index == 2){
+				jobAmount = item.innerHTML;
+			}else if(index == 3){
+				if(!item.innerHTML){
+					jobActiveFlg = 'แสดง';
+				}else{
+					jobActiveFlg = item.innerHTML.trim();	
+				}
+				jobActiveFlg = mapJobActiveObj[jobActiveFlg];
+			}else if(index == 4){
+				tdEdit = item;
+				tdEditInner = tdEdit.innerHTML.trim();
+				//alert(tdEditInner);
+			}
+			//alert(index);
+		});
+
+		$('#divEditJob').css({'display':'block'});
+		var jsonData = {jobName:jobName, jobDetail:jobDetail, jobAmount:jobAmount,
+						jobActiveFlg:jobActiveFlg};
+		$('#jobNameEdit').val(jobName);
+		$('#jobDetailEdit').val(jobDetail);
+		$('#jobAmountEdit').val(jobAmount);
+		$('#jobActiveEdit').val(jobActiveFlg);
 	});
 
+	
+	$('#btnEditJobCancel').click(function(event){
+		event.preventDefault();
+		$('#divEditJob').css({'display':'none'});
+	});
 });
 
 
@@ -225,7 +269,50 @@ $(function(){
 <div id="resultQueryJob" style="margin-top:5px;">
 	
 </div>
+<div id="divEditJob" style="margin-top:5px;display:none;">
+	<fieldset><legend>แก้ไขตำแหน่งงาน</legend>
+		<form id="frmEditJob">
+			<table >
+				<tr>
+					<td>ชื่อตำแหน่ง</td>
+					<td><input type="text" name="jobNameEdit" id="jobNameEdit" 
+						   style="width:200px;" maxlength="255"></td>
+				</tr>
 
+				<tr>
+					<td>รายละเอียดงาน</td>
+					<td><textarea name="jobDetailEdit" id="jobDetailEdit" cols="70" rows="7"></textarea></td>
+				</tr>
+
+				<tr>
+					<td>จำนวนที่รับ</td>
+					<td><input type="text" name="jobAmountEdit" id="jobAmountEdit" 
+						   style="width:100px;"	class="inputNumber" maxlength="2"></td>
+				</tr>
+
+				<tr>
+					<td>เปิดให้แสดง</td>
+					<td>
+						<select id="jobActiveEdit" name="jobActiveEdit">
+						  <option value="Y" selected>แสดง</option>
+						  <option value="N">ไม่แสดง</option>
+						</select>
+					</td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td>
+						<button id="btnEditJobDone">แก้ไข</button>
+						<button id="btnEditJobCancel" style="margin-left:5px;">ยกเลิก</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</fieldset>
+</div>
+
+<hr/>
 <div id="divAddJob" style="position:relative;left:2px;top:3px;">
 	<button id="btnPrepareAddJob" >เพิ่มตำแหน่ง</button>
 </div>
@@ -257,8 +344,8 @@ $(function(){
 					<td>เปิดให้แสดง</td>
 					<td>
 						<select id="jobActiveAdd" name="jobActiveAdd">
-						  <option value="Y" selected>แสดงทันที</option>
-						  <option value="N">ยังไม่ต้องแสดง</option>
+						  <option value="Y" selected>แสดง</option>
+						  <option value="N">ไม่แสดง</option>
 						</select>
 					</td>
 				</tr>

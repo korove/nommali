@@ -75,7 +75,7 @@
 			//var_dump($e->errorInfo);
 			if($e->errorInfo[1] == 1062){
 				// echo 'มีข้อมูลนี้อยู่แล้วในระบบ';
-				$arrOut['err'] = 'มีข้อมูลนี้อยู่แล้วในระบบ';
+				$arrOut['err'] = 'ไม่สามารถเพิ่มข้อมูลได้ เนื่องจากมีข้อมูลนี้อยู่แล้วในระบบ';
 			}else{
 			    // echo 'Error: ' . $e->getMessage();
 			    $arrOut['err'] = 'Error: ' . $e->getMessage();

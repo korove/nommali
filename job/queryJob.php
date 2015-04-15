@@ -50,7 +50,7 @@
 
 
 	if(!empty($rows)){
-		$mapActiveFlg = array('Y'=>'แสดงแล้ว', 'N'=>'ยังไม่แสดง');
+		$mapActiveFlg = array('Y'=>'แสดง', 'N'=>'ไม่แสดง');
 		// echo 'not empty';
 		// echo "<table id='tblResultQueryJob' style='color:blue'>";
 		echo "<table id='tblResultQueryJob' border='1'>";
@@ -70,11 +70,9 @@
 
 			echo "<td>";
 ?>
-			<!-- <select id="jobActiveResult" name="jobActiveResult" disabled> -->
 			<?php //echo "<option value='{$row['activeFlg']}'>".$mapActiveFlg[$row['activeFlg']]."</option>"; 
 				echo $mapActiveFlg[$row['activeFlg']];
 			?>
-			<!-- </select> -->
 <?php
 			echo "</td>";
 			echo "<td>"; ?>
