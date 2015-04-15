@@ -115,3 +115,11 @@ body{
 #frmAddJob td{
 	padding: 3px;
 }
+
+#tblResultQueryJob{
+	color:blue;
+}
+
+#tblResultQueryJob th,td{
+	padding: 3px;
+}

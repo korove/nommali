@@ -170,11 +170,19 @@ $(function(){
 				<tr>
 					<td>ชื่อตำแหน่ง</td>
 					<!-- <td>จำนวน</td> -->
+					<td>ที่แสดงแล้ว</td>
 					<td></td>
 				</tr>
 				<tr>
 					<td><input type="text" name="jobName" id="jobName" 
 						   style="width:200px;" maxlength="255"></td>
+					<td>
+						<select id="jobActiveQuery" name="jobActiveQuery">
+						  <option value="All" selected>เลือกทั้งหมด</option>
+						  <option value="Y">ที่แสดงแล้ว</option>
+						  <option value="N">ที่ยังไม่แสดง</option>
+						</select>
+					</td>
 					<!-- <td><input type="text" name="jobAmount" id="jobAmount" 
 						   style="width:100px;"	class="inputNumber" maxlength="2"></td> -->
 					<td><button id="btnQueryJob">ค้นหา</button></td>
@@ -184,15 +192,15 @@ $(function(){
 		
 	</fieldset>
 </div>
-<div id="resultQueryJob">
+<div id="resultQueryJob" style="margin-top:5px;">
 	
 </div>
 
-<div id="divAddJob" style="position:relative;left:2px;">
+<div id="divAddJob" style="position:relative;left:2px;top:3px;">
 	<button id="btnPrepareAddJob" >เพิ่มตำแหน่ง</button>
 </div>
 
-<div id="divPrepareAddJob" style="position:relative;left:2px;">
+<div id="divPrepareAddJob" style="position:relative;left:2px;top:3px;">
 	<div id="errAddJob" style="color:red;"></div>
 	<fieldset>
 		<legend>เพิ่มตำแหน่ง</legend>
