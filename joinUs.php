@@ -223,11 +223,34 @@ $(function(){
 		$('#jobActiveEdit').val(jobActiveFlg);
 	});
 
-	
+	$('body').on('click','.btnDeleteJobRow',function(){
+
+		$currentTr = $(this).parent().parent();
+		$tdChilds = $currentTr.children();
+		var jobName = "";
+
+		$.each($tdChilds, function(index,item){
+			if(index == 0){
+				jobName = item.innerHTML;
+				var jobNameHtml = "";
+			}
+		});
+
+		var result = confirm("คุณต้องการลบตำแหน่ง " + jobName + " ใช่หรือไม่");
+		if (result) {
+		    //Logic to delete the item
+		    alert('Yes');
+		}else{
+			alert('No');
+		}
+	});
+
 	$('#btnEditJobCancel').click(function(event){
 		event.preventDefault();
 		$('#divEditJob').css({'display':'none'});
 	});
+
+	$( "#dialog" ).dialog();
 });
 
 
@@ -235,6 +258,9 @@ $(function(){
 </script>
 
 <h1>ร่วมงานกับเรา</h1>
+<div id="dialog" title="Basic dialog">
+  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
 <div id="errQueryJob" class="errorMsg">
 	
 </div>

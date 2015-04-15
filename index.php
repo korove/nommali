@@ -1,20 +1,6 @@
 <?php session_start(); 
 	include('./include/function.php');
 ?>
-<?php 
-
-	// $link = mysqli_connect("local", "root", "add", "dff");
-	// if(!$link){
-	// 	exit("exit");
-	// }
-
-	// $link = @mysqli_connect("local", "root", "add", "dff")
-	// 		or die("cannot connect");
-
-	// $link = @mysqli_connect("local", "root", "add", "dff")
-	// 		or die(mysqli_connect_error());
-
- ?>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,10 +9,12 @@
 
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="./bootstrap-3.3.4/dist/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="./js/jquery-ui1.11.4.css">
 	<script src="./js/jquery-2.1.1.min.js"></script>
 	<script src="./js/jquery.blockUI.js"></script>
 	<script src="./js/jquery.form.min.js"></script>
 	<script src="./bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
+	<script src="./js/jquery-ui1.11.4.js"></script>
 	<link rel="stylesheet" type="text/css" href="./css/home.css">
 	
 	<script src="./js/homeScript.js"></script>

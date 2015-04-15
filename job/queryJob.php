@@ -61,6 +61,7 @@
 		echo "<th>จำนวนที่ต้องการ</th>";
 		echo "<th>การแสดงผล</th>";
 		echo "<th>แก้ไข</th>";
+		echo "<th>ลบ</th>";
 		echo "</tr>";
 		foreach ($rows as $row) {
 		    // echo "{$row['jobname']}";
@@ -75,12 +76,13 @@
 				echo $mapActiveFlg[$row['activeFlg']];
 			?>
 <?php
-			echo "</td>";
-			echo "<td>"; ?>
-			<button class="btnEditJobRow">แก้ไข</button>
-<?php		echo "</td>";
+			echo "</td>";?>
+			<td><button class="btnEditJobRow">แก้ไข</button>
+			</td>
+			<td><button class="btnDeleteJobRow">ลบ</button>
+			</td>
 
-			echo "</tr>";
+<?php		echo "</tr>";
 
 		}
 		echo "</table>";
