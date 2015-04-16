@@ -13,7 +13,7 @@
 </body>
 </html>
 <?php 
-	header("Refresh: 3; url=/nommali/index.php");
+	header("Refresh: 2; url=/nommali/index.php");
 	ob_end_flush();
 	exit;
 ?>

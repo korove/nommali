@@ -78,17 +78,25 @@
 		<div id="content" style="text-align:center;">
 			<div class="divLogin">
 				<form id="frmLoginAdm" action="portal.php" method="post">
-				  <div class="form-group">
-				    <label for="userLogin" style="float:left;">Username</label>
-				    <input type="text" class="form-control" id="userLogin" name="userLogin"
-				    	placeholder="กรอก Username">
-				  </div>
-				  <div class="form-group">
-				    <label for="password" style="float:left;">Password</label>
-				    <input type="password" class="form-control" id="password" name="password"
+					<h4>เข้สู่ระบบ</h4>
+					<div class="input-group input-group-lg">
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-user"></span>	
+						</span>
+						<input type="text" class="form-control" id="userLogin" name="userLogin"
+						    	placeholder="กรอก Username">
+					</div>
+
+					<div class="input-group input-group-lg">
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-lock"></span>	
+						</span>
+						<input type="password" class="form-control" id="password" name="password"
 				    	placeholder="กรอก Password">
-				  </div>
-				  <button id="btnLoginAdm" type="submit" class="btn btn-default" style="float:left;">เข้าสู่ระบบ</button>
+					</div>
+
+					<button id="btnLoginAdm" type="submit" class="btn btn-default" style="margin-top:7px;">เข้าสู่ระบบ</button>
+
 				</form>
 			</div>
 
