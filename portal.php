@@ -78,7 +78,7 @@
 		<div id="content" style="text-align:center;">
 			<div class="divLogin">
 				<form id="frmLoginAdm" action="portal.php" method="post">
-					<h4>เข้สู่ระบบ</h4>
+					<h4>เข้าสู่ระบบ</h4>
 					<div class="input-group input-group-lg">
 						<span class="input-group-addon">
 							<span class="glyphicon glyphicon-user"></span>	
