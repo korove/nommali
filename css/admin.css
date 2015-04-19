@@ -1,44 +1,30 @@
 div#headerAdm {
-
 	background: #444444;
-
+}
+div#navAdm {
+	background: #64d7f4;
 }
 
 div#navigationAdm {
-
-
 background: white;
-
 width: 25%;
-
 float: left;
-
 }
 
 div#wrapperAdm {
 padding: 0px;
-
 margin: 0;
-
 background: #BDBD00;
-
 }
 
 div#contentAdm {
 padding: 30px;
-
 margin: 0;
-
-background: #BDBD00;
-
+background: #00bd12;
 }
 
 div#footerAdm {
-
 background: #800000;
-
 width: 100%;
-
 clear: left;
-
 }
