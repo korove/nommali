@@ -7,7 +7,8 @@
 	//include_once("{$base_dir}include{$ds}function.php");
 	// include_once("{$ds}nommali{$ds}include{$ds}function.php");
 	$root = $_SERVER['DOCUMENT_ROOT'];
-   	$path = $root . "nommali/include/function.php";
+	$includePath = "nommali/include/";
+   	$path = $root . $includePath ."function.php";
    	include_once($path);
 
 ?>
@@ -53,8 +54,6 @@
 		</div>
 
 		<div id="contentAdm">
-			<?php echo __DIR__ ?><br>
-			<?php echo __FILE__ ?>
 			<div style="width:600px;">
 
 			</div>
