@@ -44,7 +44,6 @@
 
 <body>
 
-	<div id="wrapperAdm">
 		<div id="headerAdm">
 			<div ><img src="/nommali/logomali.jpg" style="width:120px;" /></div>
 		</div>
@@ -77,7 +76,6 @@
 			<?php include("{$base_dir}admin{$ds}footerAdm.php"); ?>
 		</div>
 
-	</div>
 </body>
 
 </html>
