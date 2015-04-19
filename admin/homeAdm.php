@@ -67,7 +67,7 @@
 					$page .= '.php';
 					include($root . "nommali/admin/". $page);
 				} else {
-					echo 'this is admin home content';
+					echo '<h4>this is admin home content</h4>';
 				}
 			?>
 		</div>
