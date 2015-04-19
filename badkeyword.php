@@ -24,7 +24,160 @@
 	<link rel="stylesheet" type="text/css" href="./css/home.css">
 	
 	<script src="./js/homeScript.js"></script>
-	
+	<script>
+$(function(){
+	var jobNameForEdit = "";
+	var editJobDone = false;
+	$('#btnQuery').click(function(event){
+		event.preventDefault();
+
+		var url='/nommali/badkeyword/query.php';
+		var data=$('#frmQuery').serializeArray();
+
+		$.ajax({
+			url:url,
+			type:'post',
+			data:data,
+			beforeSend:function(){
+				// $('#frmQueryJob').block();
+				$.blockUI();
+			},
+			error:function(xhr, textStatus){
+				// alert('xhr:'+ xhr +', textStatus:'+textStatus);
+				var msg = 'xhr: ' + xhr.status;
+				//alert(msg);
+				$('#errQuery').html('<h4 style="color:red;">msg:' + msg+"</h4>");
+			},
+			complete:function(){
+				// $('#frmQueryJob').unblock();
+				$.unblockUI();	
+			},
+			success:function(result){
+				$('#resultQuery').html(result);
+			}
+		});
+	});
+
+	$('#btnPrepareAddJob').click(function(event){
+		event.preventDefault();
+		$('#divPrepareAddJob').css('display', 'block');
+	});
+
+	$('#frmAdd td:first-child').css({'text-align':'right'});
+
+	$('#btnAdd').click(function(event){
+		event.preventDefault();
+
+		var url='/nommali/job/add.php';
+		var data=$('#frmAdd').serializeArray();
+		/*$.each(data, function(i, field){
+	        $("#errAddJob").append(field.name + ":" + field.value + ", ");
+	    });*/
+
+		$.ajax({
+			url:url,
+			type:'post',
+			data:data,
+			dataType:'json',
+			beforeSend:function(){
+				// $('#frmQueryJob').block();
+				$.blockUI();
+			},
+			error:function(xhr, textStatus){
+				// alert('xhr:'+ xhr +', textStatus:'+textStatus);
+				var msg = 'xhr: ' + xhr.status;
+				//alert(msg);
+				$('#errAddJob').html('<h4 style="color:red;">msg:' + msg+"</h4>");
+			},
+			complete:function(){
+				// $('#frmQueryJob').unblock();
+				$.unblockUI();	
+			},
+			success:function(result){
+				// $('#errAddJob').html(result);
+				$('#errAddJob').html(result.err);
+				$('#divResultAddJob').html(result.successMsg);
+			}
+		});
+	});
+
+	$('body').on('click','#tblResultQuerybadkeyword .btnEditbadkeywordRow',function(){
+		alert(111);
+		event.preventDefault();
+
+		var mapJobActive = '{"แสดง":"Y","ไม่แสดง":"N"}';
+		var mapJobActiveObj = JSON.parse(mapJobActive);
+		// alert(mapJobActiveObj['แสดง']);
+		// var msg = event.target.className;
+		// var msg = event.target.innerHTML;
+		// var msg = $(this).parent().parent().children('td:first-child').html();
+
+		$currentTr = $(this).parent().parent();
+		$tdChilds = $currentTr.children();
+		var jobName = "";
+		var jobDetail = "";
+		var jobAmount = "";
+		var jobActiveFlg = "";
+		var tdEdit = "";
+		var tdEditInner = "";
+
+		$.each($tdChilds, function(index,item){
+			if(index == 0){
+				jobName = item.innerHTML;
+				var jobNameHtml = "";
+				//alert(jobName);
+			}else if(index == 1){
+				if(!item.innerHTML){
+					jobActiveFlg = 'แสดง';
+				}else{
+					jobActiveFlg = item.innerHTML.trim();	
+				}
+				jobActiveFlg = mapJobActiveObj[jobActiveFlg];
+			}
+			//alert(index);
+		});
+
+		$('#divEditJob').css({'display':'block'});
+		var jsonData = {jobName:jobName, jobDetail:jobDetail, jobAmount:jobAmount,
+						jobActiveFlg:jobActiveFlg};
+		jobNameForEdit = jobName;
+		$('#bandKeyWordNameEdit').val(jobName);
+		$('#bandKeyWordNameActiveEdit').val(jobActiveFlg);
+	});
+
+	$('body').on('click','.btnDeletebadkeywordRow',function(){
+
+		$currentTr = $(this).parent().parent();
+		$tdChilds = $currentTr.children();
+		var jobName = "";
+
+		$.each($tdChilds, function(index,item){
+			if(index == 0){
+				jobName = item.innerHTML;
+				var jobNameHtml = "";
+			}
+		});
+
+		var result = confirm("คุณต้องการลบข้อมูล " + jobName + " ใช่หรือไม่");
+		if (result) {
+		    //Logic to delete the item
+		    alert('Yes');
+		}else{
+			alert('No');
+		}
+	});
+
+	$('#btnEditJobCancel').click(function(event){
+		event.preventDefault();
+		$('#divEditJob').css({'display':'none'});
+	});
+
+});
+
+
+
+</script>
+
 <h1>จัดการคำหยาบ</h1>
 <div id="errQuery" class="errorMsg">
 	
@@ -65,7 +218,7 @@
 
 
 <div id="divEdit" style="margin-top:5px;display:none;">
-	<fieldset><legend>แก้ไขตำแหน่งงาน</legend>
+	<fieldset><legend>แก้ไขคำหยาบ</legend>
 		<form id="frmEdit">
 			<table >
 				<tr>
