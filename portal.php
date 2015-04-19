@@ -77,7 +77,7 @@
 
 		<div id="content" style="text-align:center;margin-top:-10px;">
 			<div class="divLogin">
-				<form id="frmLoginAdm" action="portal.php" method="post">
+				<form id="frmLoginAdm" >
 					<h4 style="font-size:150%;">เข้าสู่ระบบ</h4>
 					<div class="input-group input-group-lg">
 						<span class="input-group-addon">
