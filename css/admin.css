@@ -12,15 +12,17 @@ float: left;
 }
 
 div#wrapperAdm {
-padding: 0px;
+padding: 0;
 margin: 0;
 background: #BDBD00;
 }
 
 div#contentAdm {
-padding: 30px;
+padding: 0 30px 30px 30px;
 margin: 0;
 background: #00bd12;
+position:relative;
+top:-1px;
 }
 
 div#footerAdm {
