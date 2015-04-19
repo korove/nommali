@@ -75,10 +75,10 @@
 <body>
 	<div id="wrapper">
 
-		<div id="content" style="text-align:center;">
+		<div id="content" style="text-align:center;margin-top:-10px;">
 			<div class="divLogin">
 				<form id="frmLoginAdm" action="portal.php" method="post">
-					<h4>เข้าสู่ระบบ</h4>
+					<h4 style="font-size:150%;">เข้าสู่ระบบ</h4>
 					<div class="input-group input-group-lg">
 						<span class="input-group-addon">
 							<span class="glyphicon glyphicon-user"></span>	
@@ -100,7 +100,7 @@
 				</form>
 			</div>
 
-			<div class="divLogin" id="divErrMsg" style="color:red;width: 60%;">
+			<div class="divLogin" id="divErrMsg" style="color:red;width: 60%;font-size: 150%;width:100%;">
 			</div>
 
 		</div>
