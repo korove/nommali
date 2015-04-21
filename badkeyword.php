@@ -68,7 +68,7 @@ $(function(){
 	$('#btnAdd').click(function(event){
 		event.preventDefault();
 
-		var url='/nommali/job/add.php';
+		var url='/nommali/badkeyword/add.php';
 		var data=$('#frmAdd').serializeArray();
 		/*$.each(data, function(i, field){
 	        $("#errAddJob").append(field.name + ":" + field.value + ", ");
@@ -87,7 +87,7 @@ $(function(){
 				// alert('xhr:'+ xhr +', textStatus:'+textStatus);
 				var msg = 'xhr: ' + xhr.status;
 				//alert(msg);
-				$('#errAddJob').html('<h4 style="color:red;">msg:' + msg+"</h4>");
+				$('#errAdd').html('<h4 style="color:red;">msg:' + msg+"</h4>");
 			},
 			complete:function(){
 				// $('#frmQueryJob').unblock();
@@ -95,18 +95,19 @@ $(function(){
 			},
 			success:function(result){
 				// $('#errAddJob').html(result);
-				$('#errAddJob').html(result.err);
-				$('#divResultAddJob').html(result.successMsg);
+				$('#errAdd').html(result.err);
+				$('#divResultAdd').html(result.successMsg);
 			}
 		});
 	});
 
-	$('body').on('click','#tblResultQuerybadkeyword .btnEditbadkeywordRow',function(){
-		alert(111);
+	$('body').on('click','#tblResultQuerybadkeyword .btnEditbadkeywordRow',function(event){
+		
 		event.preventDefault();
-
+		
 		var mapJobActive = '{"แสดง":"Y","ไม่แสดง":"N"}';
 		var mapJobActiveObj = JSON.parse(mapJobActive);
+	
 		// alert(mapJobActiveObj['แสดง']);
 		// var msg = event.target.className;
 		// var msg = event.target.innerHTML;
@@ -114,6 +115,7 @@ $(function(){
 
 		$currentTr = $(this).parent().parent();
 		$tdChilds = $currentTr.children();
+		var rowid ="";
 		var jobName = "";
 		var jobDetail = "";
 		var jobAmount = "";
@@ -123,10 +125,14 @@ $(function(){
 
 		$.each($tdChilds, function(index,item){
 			if(index == 0){
+				rowid = item.innerHTML;
+				//alert(jobName);
+			}
+			else if(index == 1){
 				jobName = item.innerHTML;
 				var jobNameHtml = "";
 				//alert(jobName);
-			}else if(index == 1){
+			}else if(index == 2){
 				if(!item.innerHTML){
 					jobActiveFlg = 'แสดง';
 				}else{
@@ -137,10 +143,12 @@ $(function(){
 			//alert(index);
 		});
 
-		$('#divEditJob').css({'display':'block'});
-		var jsonData = {jobName:jobName, jobDetail:jobDetail, jobAmount:jobAmount,
+		$('#divEdit').css({'display':'block'});
+		var jsonData = {rowid:rowid, jobName:jobName, 
 						jobActiveFlg:jobActiveFlg};
 		jobNameForEdit = jobName;
+
+		$('#rowIdbandKeyWordNameEdit').val(rowid);
 		$('#bandKeyWordNameEdit').val(jobName);
 		$('#bandKeyWordNameActiveEdit').val(jobActiveFlg);
 	});
@@ -167,9 +175,45 @@ $(function(){
 		}
 	});
 
-	$('#btnEditJobCancel').click(function(event){
+	$('#btnEditDone').click(function(event){
 		event.preventDefault();
-		$('#divEditJob').css({'display':'none'});
+
+		var url='/nommali/badkeyword/edit.php';
+		var data=$('#frmEdit').serializeArray();
+		/*$.each(data, function(i, field){
+	        $("#errAddJob").append(field.name + ":" + field.value + ", ");
+	    });*/
+
+		$.ajax({
+			url:url,
+			type:'post',
+			data:data,
+			dataType:'json',
+			beforeSend:function(){
+				// $('#frmQueryJob').block();
+				$.blockUI();
+			},
+			error:function(xhr, textStatus){
+				// alert('xhr:'+ xhr +', textStatus:'+textStatus);
+				var msg = 'xhr: ' + xhr.status;
+				//alert(msg);
+				$('#errEdit').html('<h4 style="color:red;">msg:' + msg+"</h4>");
+			},
+			complete:function(){
+				// $('#frmQueryJob').unblock();
+				$.unblockUI();	
+			},
+			success:function(result){
+				// $('#errAddJob').html(result);
+				$('#errEdit').html(result.err);
+				$('#divResultEdit').html(result.successMsg);
+			}
+		});
+	});
+
+	$('#btnEditCancel').click(function(event){
+		event.preventDefault();
+		$('#divEdit').css({'display':'none'});
 	});
 
 });
@@ -199,7 +243,7 @@ $(function(){
 					<td><input type="text" name="bandKeyWordName" id="bandKeyWordName" 
 						   style="width:200px;" maxlength="255"></td>
 					<td>
-						<select id="ActiveQuery" name="ActiveQuery">
+						<select id="badkeywordActiveQuery" name="badkeywordActiveQuery">
 						  <option value="All" selected>เลือกทั้งหมด</option>
 						  <option value="Y">แสดงแล้ว</option>
 						  <option value="N">ยังไม่แสดง</option>
@@ -218,14 +262,21 @@ $(function(){
 
 
 <div id="divEdit" style="margin-top:5px;display:none;">
+<div id="errEdit" style="color:red;"></div>
 	<fieldset><legend>แก้ไขคำหยาบ</legend>
 		<form id="frmEdit">
 			<table >
+			    <tr>
+					<td>รหัส</td>
+					<td><input type="text" name="rowIdbandKeyWordNameEdit" id="rowIdbandKeyWordNameEdit" 
+							
+						   style="width:200px;" maxlength="255"></td>
+				</tr>
 				<tr>
 					<td>คำหยาบ</td>
 					<td><input type="text" name="bandKeyWordNameEdit" id="bandKeyWordNameEdit" 
-							class="readonlyStyle" disabled="true" 
-						   style="width:200px;" maxlength="255" readonly="true"></td>
+							
+						   style="width:200px;" maxlength="255"></td>
 				</tr>
 
 				<tr>
@@ -249,7 +300,7 @@ $(function(){
 		</form>
 	</fieldset>
 </div>
-
+<div id="divResultEdit">
 <hr/>
 <div id="divAdd" style="position:relative;left:2px;top:3px;">
 	<button id="btnPrepareAdd" >เพิ่มคำหยาบ</button>
@@ -263,14 +314,14 @@ $(function(){
 			<table >
 				<tr>
 					<td>คำหยาบ</td>
-					<td><input type="text" name="jobNameAdd" id="jobNameAdd" 
+					<td><input type="text" name="badkeywordNameAdd" id="badkeywordNameAdd" 
 						   style="width:200px;" maxlength="255"></td>
 				</tr>
 
 				<tr>
 					<td>เปิดให้แสดง</td>
 					<td>
-						<select id="jobActiveAdd" name="jobActiveAdd">
+						<select id="badkeywordActiveAdd" name="badkeywordActiveAdd">
 						  <option value="Y" selected>แสดง</option>
 						  <option value="N">ไม่แสดง</option>
 						</select>

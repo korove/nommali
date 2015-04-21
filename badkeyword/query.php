@@ -7,7 +7,7 @@
 
 	// $badkeywordName = isset($_POST['badkeywordName']) ? validateInputData($_POST['badkeywordName']) : "";
 	// $badkeywordAmount = isset($_POST['badkeywordAmount']) ? validateInputData($_POST['badkeywordAmount']) : "";
-	$badkeywordName = empty($_POST['badkeywordName']) ? "" : validateInputData($_POST['badkeywordName']);
+	$badkeywordName = empty($_POST['bandKeyWordName']) ? "" : validateInputData($_POST['bandKeyWordName']);
 	$badkeywordAmount = empty($_POST['badkeywordAmount']) ? "" : validateInputData($_POST['badkeywordAmount']);
 	$badkeywordActiveQuery = empty($_POST['badkeywordActiveQuery']) ? "" : validateInputData($_POST['badkeywordActiveQuery']);
 
@@ -17,19 +17,19 @@
 
 	if(!empty($badkeywordName)){
 		if(!$hasFirstParamBefore){
-			$sql .=	" where badkeywordname like :badkeywordname";
+			$sql .=	" where keyword like :badkeywordname";
 			$hasFirstParamBefore = true;
 		}else{
-			$sql .=	" or badkeywordname like :badkeywordname";
+			$sql .=	" or keyword like :badkeywordname";
 		}
 	}
 
 	if(!empty($badkeywordActiveQuery) && $badkeywordActiveQuery !== 'All'){
 		if(!$hasFirstParamBefore){
-			$sql .=	" where activeFlg = :activeFlg";
+			$sql .=	" where active = :activeFlg";
 			$hasFirstParamBefore = true;
 		}else{
-			$sql .=	" or activeFlg = :activeFlg";
+			$sql .=	" or active = :activeFlg";
 		}
 	}
 
@@ -56,6 +56,7 @@
 		// echo "<table id='tblResultQuerybadkeyword' border='1'>";
 		echo "<table id='tblResultQuerybadkeyword'>";
 		echo "<tr>";
+		echo "<th>รหัส</th>";
 		echo "<th>คำหยาบ</th>";
 		echo "<th>การแสดงผล</th>";
 		echo "<th>แก้ไข</th>";
@@ -64,6 +65,7 @@
 		foreach ($rows as $row) {
 		    // echo "{$row['badkeywordname']}";
 		    echo "<tr>";
+		    echo "<td>{$row['rowid']}</td>";
 			echo "<td>{$row['keyword']}</td>";
 
 
