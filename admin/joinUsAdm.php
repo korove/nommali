@@ -258,6 +258,44 @@ $(function(){
 		$('#divEditJob').css({'display':'none'});
 	});
 
+	$('#btnEditJobDone').click(function(event){
+		event.preventDefault();
+		//$('#divEditJob').css({'display':'none'});
+
+		var url='/nommali/job/editJob.php';
+		var data=$('#frmEditJob').serializeArray();
+		/*$.each(data, function(i, field){
+	        $("#errAddJob").append(field.name + ":" + field.value + ", ");
+	    });*/
+
+		$.ajax({
+			url:url,
+			type:'post',
+			data:data,
+			dataType:'json',
+			beforeSend:function(){
+				// $('#frmQueryJob').block();
+				$.blockUI();
+			},
+			error:function(xhr, textStatus){
+				// alert('xhr:'+ xhr +', textStatus:'+textStatus);
+				var msg = 'xhr: ' + xhr.status;
+				//alert(msg);
+				$('#errEditJob').html('<h4 style="color:red;">msg:' + msg+"</h4>");
+			},
+			complete:function(){
+				// $('#frmQueryJob').unblock();
+				$.unblockUI();	
+			},
+			success:function(result){
+				// $('#errAddJob').html(result);
+				$('#errEditJob').html(result.err);
+				$('#resultEditJob').html(result.successMsg);
+				$('#resultEditJob').html(result.testMsg);
+			}
+		});
+	});
+
 });
 
 
@@ -299,6 +337,13 @@ $(function(){
 	</fieldset>
 </div>
 <div id="resultQueryJob" style="margin-top:5px;">
+	
+</div>
+
+<div id="resultEditJob" style="margin-top:5px;">
+	
+</div>
+<div id="errEditJob" style="margin-top:5px;color:red;">
 	
 </div>
 <div id="divEditJob" style="margin-top:5px;display:none;">

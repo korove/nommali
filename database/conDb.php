@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
 $username = "root";
-//$password = "abc456";
-$password = "";
+$password = "abc456";
+// $password = "";
 $dbname = "nommali";
 // $dbname = "nom_tra_mali";
 
