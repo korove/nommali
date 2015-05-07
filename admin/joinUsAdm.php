@@ -353,7 +353,7 @@ $(function(){
 				<tr>
 					<td>ชื่อตำแหน่ง</td>
 					<td><input type="text" name="jobNameEdit" id="jobNameEdit" 
-							class="readonlyStyle" disabled="true" 
+							class="readonlyStyle" 
 						   style="width:200px;" maxlength="255" readonly="true"></td>
 				</tr>
 

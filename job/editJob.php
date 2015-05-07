@@ -17,33 +17,45 @@
 	$amount = empty($_POST['jobAmountEdit']) ? "" : validateInputData($_POST['jobAmountEdit']);
 	$activeFlg = empty($_POST['jobActiveEdit']) ? "" : validateInputData($_POST['jobActiveEdit']);
 
-	$arrOut['testMsg'] = "jobname = jobname, detail = " . $detail . ", amount = " . $amount . ", activeFlg = " . $activeFlg;
+	$arrOut['testMsg'] = "jobname = {$jobname}, detail = " . $detail . ", amount = " . $amount . ", activeFlg = " . $activeFlg;
 	//$sql  = "select * from job";
 	// $sql  = "insert into job (jobname, detail, amount, activeFlg)" . 
 	// " values(:jobname,:detail,:amount,:activeFlg)";
 
 	// $sql  = "insert into job(jobname,detail,amount,activeFlg) ";
 	// $sql .=	" values(:jobname,:detail,:amount,:activeFlg)";
-	$sql  = "update job set jobname=:jobname, detail=:detail, amount=:amount, activeFlg=:activeFlg" . 
-	" where jobname=:jobname2";
+	// $sql  = "update job set detail=':detail', amount=':amount', activeFlg=':activeFlg'" . 
+	// " where jobname=':jobname2'";
+	$sql  = "update job set detail='{$detail}', amount='{$amount}', activeFlg='{$activeFlg}'" . 
+	" where jobname='{$jobname}'";
 	
-	$stmt = $conPDO->prepare($sql);
-
-	try{
-		$stmt->execute(array(':jobname' => $jobname, ':detail' => $detail, ':amount' => $amount, ':activeFlg' => $activeFlg, ':jobname2' => $jobname));
-		$affected_rows = $stmt->rowCount();
-
-		$arrOut['successMsg'] = 'affected_rows = ' . $affected_rows;
-	} catch (PDOException $e) {
-		//var_dump($e->errorInfo);
-		if($e->errorInfo[1] == 1062){
-			// echo 'มีข้อมูลนี้อยู่แล้วในระบบ';
-			$arrOut['err'] = 'ไม่สามารถเพิ่มข้อมูลได้ เนื่องจากมีข้อมูลนี้อยู่แล้วในระบบ';
-		}else{
-		    // echo 'Error: ' . $e->getMessage();
-		    $arrOut['err'] = 'Error: ' . $e->getMessage();
-		}
+	if ($conn->query($sql) === TRUE) {
+	    //echo "Record updated successfully";
+	    $arrOut['testMsg'] .= "<br/>" . "Record updated successfully";
+	} else {
+	    //echo "Error updating record: " . $conn->error;
+	    $arrOut['testMsg'] .= "<br/>" . "Error updating record: " . $conn->error;
 	}
+
+	$conn->close();
+
+	// $stmt = $conPDO->prepare($sql);
+
+	// try{
+	// 	$stmt->execute(array(':detail' => $detail, ':amount' => $amount, ':activeFlg' => $activeFlg, ':jobname2' => $jobname));
+	// 	$affected_rows = $stmt->rowCount();
+
+	// 	$arrOut['successMsg'] = 'affected_rows = ' . $affected_rows;
+	// } catch (PDOException $e) {
+	// 	//var_dump($e->errorInfo);
+	// 	if($e->errorInfo[1] == 1062){
+	// 		// echo 'มีข้อมูลนี้อยู่แล้วในระบบ';
+	// 		$arrOut['err'] = 'ไม่สามารถเพิ่มข้อมูลได้ เนื่องจากมีข้อมูลนี้อยู่แล้วในระบบ';
+	// 	}else{
+	// 	    // echo 'Error: ' . $e->getMessage();
+	// 	    $arrOut['err'] = 'Error: ' . $e->getMessage();
+	// 	}
+	// }
 
 	// echo $err;
 	echo json_encode($arrOut);
