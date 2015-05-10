@@ -106,6 +106,8 @@ $(function(){
 	var editJobDone = false;
 	
 	$('#btnQueryJob').click(function(event){
+		$('#divPrepareAddJob').css({'display':'none'});
+
 		event.preventDefault();
 
 		var url='/nommali/job/queryJob.php';
@@ -248,9 +250,34 @@ $(function(){
 		var result = confirm("คุณต้องการลบตำแหน่ง " + jobName + " ใช่หรือไม่");
 		if (result) {
 		    //Logic to delete the item
-		    alert('Yes');
+		    //alert('Yes');
+		    var url='/nommali/job/deleteJob.php';
+			var data={jobName: jobName};
+
+			$.ajax({
+				url:url,
+				type:'post',
+				data:data,
+				beforeSend:function(){
+					// $('#frmQueryJob').block();
+					$.blockUI();
+				},
+				error:function(xhr, textStatus){
+					// alert('xhr:'+ xhr +', textStatus:'+textStatus);
+					var msg = 'xhr: ' + xhr.status;
+					//alert(msg);
+					$('#errQueryJob').html('<h4 style="color:red;">msg:' + msg+"</h4>");
+				},
+				complete:function(){
+					// $('#frmQueryJob').unblock();
+					$.unblockUI();	
+				},
+				success:function(result){
+					$('#resultQueryJob').html(result.testMsg);
+				}
+			});
 		}else{
-			alert('No');
+			//alert('No');
 		}
 	});
 
@@ -331,6 +358,8 @@ $(function(){
 					<!-- <td><input type="text" name="jobAmount" id="jobAmount" 
 						   style="width:100px;"	class="inputNumber" maxlength="2"></td> -->
 					<td><button id="btnQueryJob">ค้นหา</button></td>
+					<td><button id="btnPrepareAddJob" >เพิ่มตำแหน่ง</button></td>
+					
 				</tr>
 			</table>
 			<input type="hidden" name="currentPage" value="1" id="currentPage">
@@ -392,12 +421,11 @@ $(function(){
 	</fieldset>
 </div>
 
-<hr/>
 <div id="divAddJob" style="position:relative;left:2px;top:3px;">
-	<button id="btnPrepareAddJob" >เพิ่มตำแหน่ง</button>
+	<!-- <button id="btnPrepareAddJob" >เพิ่มตำแหน่ง</button> -->
 </div>
 
-<div id="divPrepareAddJob" style="position:relative;left:2px;top:3px;">
+<div id="divPrepareAddJob" style="position:relative;left:2px;top:3px;display:none;">
 	<div id="errAddJob" style="color:red;"></div>
 	<fieldset>
 		<legend>เพิ่มตำแหน่ง</legend>
