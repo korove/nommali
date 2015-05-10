@@ -107,6 +107,7 @@ $(function(){
 	
 	$('#btnQueryJob').click(function(event){
 		$('#divPrepareAddJob').css({'display':'none'});
+		$('#resultQueryJob').css('display', 'block');
 
 		event.preventDefault();
 
@@ -140,6 +141,7 @@ $(function(){
 	$('#btnPrepareAddJob').click(function(event){
 		event.preventDefault();
 		$('#divPrepareAddJob').css('display', 'block');
+		$('#resultQueryJob').css('display', 'none');
 	});
 
 	$('#frmAddJob td:first-child').css({'text-align':'right'});
@@ -319,9 +321,14 @@ $(function(){
 				// $('#errAddJob').html(result);
 				$('#errEditJob').html(result.err);
 				$('#resultEditJob').html(result.successMsg);
-				$('#resultEditJob').html(result.testMsg);
+				//$('#resultEditJob').html(result.testMsg);
+				if(result.err == ""){
+					$('#divEditJob').css({'display':'none'});
+				}
 			}
 		});
+
+		
 	});
 
 });

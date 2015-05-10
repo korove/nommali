@@ -10,7 +10,7 @@
    	require_once($root . "nommali/database/" ."conDb.php");
    	require_once($root . $includePath ."function.php");
 
-   	$arrOut = array('err'=>'333','successMsg'=>'test','testMsg'=>'testMsg');
+   	$arrOut = array('err'=>'','successMsg'=>'','testMsg'=>'testMsg');
 
 	$jobname = empty($_POST['jobNameEdit']) ? "" : validateInputData($_POST['jobNameEdit']);
 	$detail = empty($_POST['jobDetailEdit']) ? "" : validateInputData($_POST['jobDetailEdit']);
@@ -31,10 +31,11 @@
 	
 	if ($conn->query($sql) === TRUE) {
 	    //echo "Record updated successfully";
-	    $arrOut['testMsg'] .= "<br/>" . "Record updated successfully";
+	    //$arrOut['testMsg'] .= "<br/>" . "Record updated successfully";
+		$arrOut['successMsg'] .= "<br/>" . "แก้ไขข้อมูลเรียบร้อย";
 	} else {
 	    //echo "Error updating record: " . $conn->error;
-	    $arrOut['testMsg'] .= "<br/>" . "Error updating record: " . $conn->error;
+	    $arrOut['err'] .= "<br/>" . "Error updating record: " . $conn->error;
 	}
 
 	$conn->close();

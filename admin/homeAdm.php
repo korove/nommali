@@ -130,7 +130,7 @@
 			<?php include "{$base_dir}headerAdm.php"; ?>
 		</div>
 
-		<div id="contentAdm">
+		<div id="contentAdm" style="background-color: #C7F6F9;">
 			<div style="width:600px;">
 
 			</div>
