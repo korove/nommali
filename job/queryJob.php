@@ -53,6 +53,9 @@
 		}
 	}
 
+	// echo "sql = " . $sql;
+	// echo "<br/>$jobActiveQuery = " . $jobActiveQuery;
+
 	$stmt = $conPDO->prepare($sql);
 	if(!empty($jobName)) $stmt->bindValue(':jobname', "%$jobName%", PDO::PARAM_STR);
 	if(!empty($jobActiveQuery) && $jobActiveQuery !== 'All') $stmt->bindValue(':activeFlg', $jobActiveQuery, PDO::PARAM_STR);
@@ -60,7 +63,7 @@
 		$stmt->execute();
 		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	} catch (PDOException $e) {
-	    echo 'Connection failed: ' . $e->getMessage();
+	    echo 'Connection failed 1: ' . $e->getMessage();
 	    exit;
 	}
 
@@ -84,6 +87,7 @@
 		$totalPage = $countAll / $limitRow;
 		//if($countAll % $limitRow != 0) $totalPage += 1;
 
+		$hasFirstParamBefore = false;
 		$sql = "select * from job";
 
 		if(!empty($jobName)){
@@ -107,6 +111,9 @@
 		$sql .=	" limit {$limitFirst},{$limitLast}";
 		// echo $sql;
 		// exit;
+		// echo "sql = " . $sql;
+		// echo "<br/>$jobActiveQuery = " . $jobActiveQuery;
+
 		$stmt = $conPDO->prepare($sql);
 		if(!empty($jobName)) $stmt->bindValue(':jobname', "%$jobName%", PDO::PARAM_STR);
 		if(!empty($jobActiveQuery) && $jobActiveQuery !== 'All') $stmt->bindValue(':activeFlg', $jobActiveQuery, PDO::PARAM_STR);
@@ -116,7 +123,7 @@
 			$stmt->execute();
 			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		} catch (PDOException $e) {
-		    echo 'Connection failed: ' . $e->getMessage();
+		    echo 'Connection failed 2: ' . $e->getMessage();
 		    exit;
 		}
 		// End Query job ############################################
