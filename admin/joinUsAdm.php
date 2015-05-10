@@ -104,6 +104,7 @@
 $(function(){
 	var jobNameForEdit = "";
 	var editJobDone = false;
+	
 	$('#btnQueryJob').click(function(event){
 		event.preventDefault();
 
@@ -332,6 +333,7 @@ $(function(){
 					<td><button id="btnQueryJob">ค้นหา</button></td>
 				</tr>
 			</table>
+			<input type="hidden" name="currentPage" value="1" id="currentPage">
 		</form>
 		
 	</fieldset>
