@@ -23,6 +23,7 @@
 	if ($conn->query($sql) === TRUE) {
 	    //echo "Record updated successfully";
 	    $arrOut['testMsg'] .= "<br/>" . "Record updated successfully";
+	    $arrOut['successMsg'] = "ตำแหน่ง {$jobname} ถูกลบเรียบร้อยแล้ว";
 	} else {
 	    //echo "Error updating record: " . $conn->error;
 	    $arrOut['testMsg'] .= "<br/>" . "Error updating record: " . $conn->error;

@@ -356,7 +356,7 @@ $(function(){
 					<td><input type="text" name="jobName" id="jobName" class="form-control"
 						   style="width:200px;" maxlength="255"></td>
 					<td>
-						<select id="jobActiveQuery" name="jobActiveQuery" class="form-control">
+						<select id="jobActiveQuery" name="jobActiveQuery" class="form-control" style="max-width: 150px;">
 						  <option value="All" selected>เลือกทั้งหมด</option>
 						  <option value="Y">แสดงแล้ว</option>
 						  <option value="N">ยังไม่แสดง</option>
@@ -433,32 +433,31 @@ $(function(){
 </div>
 
 <div id="divPrepareAddJob" style="position:relative;left:2px;top:3px;display:none;">
-	<div id="errAddJob" style="color:red;"></div>
 	<fieldset>
 		<legend>เพิ่มตำแหน่ง</legend>
 		<form id="frmAddJob" style="margin-top:-7px;">
 			<table >
 				<tr>
 					<td>ชื่อตำแหน่ง</td>
-					<td><input type="text" name="jobNameAdd" id="jobNameAdd" 
+					<td><input type="text" name="jobNameAdd" id="jobNameAdd" class="form-control"
 						   style="width:200px;" maxlength="255"></td>
 				</tr>
 
 				<tr>
 					<td>รายละเอียดงาน</td>
-					<td><textarea name="jobDetailAdd" id="jobDetailAdd" cols="70" rows="7"></textarea></td>
+					<td><textarea name="jobDetailAdd" id="jobDetailAdd" cols="70" rows="7" class="form-control"></textarea></td>
 				</tr>
 
 				<tr>
 					<td>จำนวนที่รับ</td>
-					<td><input type="text" name="jobAmountAdd" id="jobAmountAdd" 
+					<td><input type="text" name="jobAmountAdd" id="jobAmountAdd" class="form-control"
 						   style="width:100px;"	class="inputNumber" maxlength="2"></td>
 				</tr>
 
 				<tr>
 					<td>เปิดให้แสดง</td>
 					<td>
-						<select id="jobActiveAdd" name="jobActiveAdd">
+						<select id="jobActiveAdd" name="jobActiveAdd" class="form-control" style='max-width: 100px;'>
 						  <option value="Y" selected>แสดง</option>
 						  <option value="N">ไม่แสดง</option>
 						</select>
@@ -467,14 +466,14 @@ $(function(){
 
 				<tr>
 					<td></td>
-					<td><button id="btnAddJob">เพิ่ม</button></td>
+					<td><button id="btnAddJob" class="btn btn-default">เพิ่ม</button></td>
 				</tr>
 			</table>
 		</form>
 		
 	</fieldset>
 </div>
-
+<div id="errAddJob" style="color:red;"></div>
 <div id="divResultAddJob">
 	
 </div>

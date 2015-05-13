@@ -69,16 +69,22 @@
 		try{
 			$stmt->execute(array(':jobname' => $jobName, ':detail' => $jobDetail, ':amount' => $jobAmount, ':activeFlg' => $jobActive));
 			$affected_rows = $stmt->rowCount();
-
-			$arrOut['successMsg'] = 'affected_rows = ' . $affected_rows;
+// 			$arrOut['successMsg'] = 'affected_rows = ' . $affected_rows;
+			if($affected_rows > 0){
+				$arrOut['successMsg'] = "<h4 style='color:blue;'>เพิ่มข้อมูลเรียบร้อยแล้ว</h4>";
+			}else{
+				$arrOut['err'] = "<h4 style='color:red;'>ไม่สามารถเพิ่มข้อมูลได้</h4>";
+			}
+			
+			
 		} catch (PDOException $e) {
 			//var_dump($e->errorInfo);
 			if($e->errorInfo[1] == 1062){
 				// echo 'มีข้อมูลนี้อยู่แล้วในระบบ';
-				$arrOut['err'] = 'ไม่สามารถเพิ่มข้อมูลได้ เนื่องจากมีข้อมูลนี้อยู่แล้วในระบบ';
+				$arrOut['err'] = "<h4 style='color:red;'>ไม่สามารถเพิ่มข้อมูลได้ เนื่องจากมีข้อมูลนี้อยู่แล้วในระบบ</h4>";
 			}else{
 			    // echo 'Error: ' . $e->getMessage();
-			    $arrOut['err'] = 'Error: ' . $e->getMessage();
+			    $arrOut['err'] = "<h4 style='color:red;'>Error: " . $e->getMessage() . "</h4>";
 			}
 		}
 	}

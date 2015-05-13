@@ -162,9 +162,9 @@
 			?>
 <?php
 			echo "</td>";?>
-			<td><button class="btnEditJobRow btn btn-default">แก้ไข</button>
+			<td><button class="btnEditJobRow btn btn-default btn-sm">แก้ไข</button>
 			</td>
-			<td><button class="btnDeleteJobRow btn btn-default">ลบ</button>
+			<td><button class="btnDeleteJobRow btn btn-default btn-sm">ลบ</button>
 			</td>
 
 <?php		echo "</tr>";
