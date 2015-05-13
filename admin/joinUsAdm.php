@@ -353,10 +353,10 @@ $(function(){
 					<td></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="jobName" id="jobName" 
+					<td><input type="text" name="jobName" id="jobName" class="form-control"
 						   style="width:200px;" maxlength="255"></td>
 					<td>
-						<select id="jobActiveQuery" name="jobActiveQuery">
+						<select id="jobActiveQuery" name="jobActiveQuery" class="form-control">
 						  <option value="All" selected>เลือกทั้งหมด</option>
 						  <option value="Y">แสดงแล้ว</option>
 						  <option value="N">ยังไม่แสดง</option>
@@ -364,8 +364,8 @@ $(function(){
 					</td>
 					<!-- <td><input type="text" name="jobAmount" id="jobAmount" 
 						   style="width:100px;"	class="inputNumber" maxlength="2"></td> -->
-					<td><button id="btnQueryJob">ค้นหา</button></td>
-					<td><button id="btnPrepareAddJob" >เพิ่มตำแหน่ง</button></td>
+					<td><button id="btnQueryJob" class="btn btn-default">ค้นหา</button></td>
+					<td><button id="btnPrepareAddJob" class="btn btn-default">เพิ่มตำแหน่ง</button></td>
 					
 				</tr>
 			</table>

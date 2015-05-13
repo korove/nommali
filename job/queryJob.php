@@ -138,7 +138,8 @@
 
 		<div id="paginationdemo" class="demo" style="background-color:transparent;border:0;">
 <?php
-		echo "<table id='tblResultQueryJob'>";
+		//echo "<table id='tblResultQueryJob' class='table'>";
+		echo "<table class='table table-striped table-bordered '>";
 		echo "<tr>";
 		echo "<th>ชื่อตำแหน่ง</th>";
 		echo "<th>รายละเอียด</th>";
@@ -161,9 +162,9 @@
 			?>
 <?php
 			echo "</td>";?>
-			<td><button class="btnEditJobRow">แก้ไข</button>
+			<td><button class="btnEditJobRow btn btn-default">แก้ไข</button>
 			</td>
-			<td><button class="btnDeleteJobRow">ลบ</button>
+			<td><button class="btnDeleteJobRow btn btn-default">ลบ</button>
 			</td>
 
 <?php		echo "</tr>";
@@ -171,7 +172,7 @@
 		}
 		echo "</table>";
 ?>
-			<div id="demo5">                   
+			<div id="demo5" style="margin-top: 5px;">                   
    			</div>
 		</div>
 

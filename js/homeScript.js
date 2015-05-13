@@ -1,4 +1,16 @@
 //alert(555); OK
+var CONFIG = (function() {
+     var private = {
+         'LOADING_TIME': '1'
+     };
+
+     return {
+        get: function(name) { return private[name]; }
+    };
+})();
+
+//alert('LOADING_TIME: ' + CONFIG.get('LOADING_TIME'));  // 1
+
 $(function(){
 	$('#msgLogin').html(new Date());
 

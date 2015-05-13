@@ -107,6 +107,7 @@
 	<script src="/nommali//jquery-ui-1.11.4.custom/jquery-ui.js"></script>
 	<link rel="stylesheet" type="text/css" href="/nommali/css/home.css">
 	<link rel="stylesheet" type="text/css" href="/nommali/css/admin.css">
+	<link rel="stylesheet" type="text/css" href="/nommali/css/font-awesome-4.3.0/css/font-awesome.min.css">
 	
 	<script src="/nommali/js/homeScript.js"></script>
 	<script>
