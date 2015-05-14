@@ -9,6 +9,11 @@ var CONFIG = (function() {
     };
 })();
 
+function clearMsg(){
+	$('.errMsg').html('');
+	$('.infoMsg').html('');
+}
+
 //alert('LOADING_TIME: ' + CONFIG.get('LOADING_TIME'));  // 1
 function isEmpty(str) {
     return (!str || 0 === str.length);

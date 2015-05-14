@@ -175,17 +175,20 @@ $(function(){
 				$.unblockUI();	
 			},
 			success:function(result){
-				alert(4440);
+				//alert(4440);
 				// $('#errAddJob').html(result);
 				if(!isEmpty(result.err)){
 					//alert(11);
+					//infoMsg
+					clearMsg();
 					$('#errAddJob').html(result.err);
 					$('#divResultAddJob').html('');
-					$('.errMsg').hide();
 				}
 
 				if(!isEmpty(result.successMsg)){
 					//alert(22);
+					$('#divPrepareAddJob').hide();
+					clearMsg();
 					$('#divResultAddJob').html(result.successMsg);
 					$('#errAddJob').html('');
 				}
@@ -350,7 +353,7 @@ $(function(){
 </script>
 
 <h1>จัดการตำแหน่งงาน</h1>
-<div id="errQueryJob" class="errorMsg">
+<div id="errQueryJob" class="errorMsg errMsg">
 	
 </div>
 <div id="divQueryJob">
@@ -390,10 +393,10 @@ $(function(){
 	
 </div>
 
-<div id="resultEditJob" style="margin-top:5px;">
+<div id="resultEditJob" style="margin-top:5px;" class="infoMsg">
 	
 </div>
-<div id="errEditJob" style="margin-top:5px;color:red;">
+<div id="errEditJob" style="margin-top:5px;color:red;" class="errMsg">
 	
 </div>
 <div id="divEditJob" style="margin-top:5px;display:none;">
@@ -416,7 +419,7 @@ $(function(){
 					<td>จำนวนที่รับ</td>
 					<td><input type="text" name="jobAmountEdit" id="jobAmountEdit" 
 							onkeypress="return numberformat.keyPressIntegerOnly(this,event)"
-						    style="width:100px;"	class="inputNumber" maxlength="2"></td>
+						    style="width:100px;"  maxlength="2"></td>
 				</tr>
 
 				<tr>
@@ -465,7 +468,7 @@ $(function(){
 					<td>จำนวนที่รับ</td>
 					<td><input type="text" name="jobAmountAdd" id="jobAmountAdd" class="form-control"
 							onkeypress="return numberformat.keyPressIntegerOnly(this,event)"
-						    style="width:100px;"	class="inputNumber" maxlength="2"></td>
+						    style="width:100px;" maxlength="2"></td>
 				</tr>
 
 				<tr>
