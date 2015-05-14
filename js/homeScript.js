@@ -10,6 +10,9 @@ var CONFIG = (function() {
 })();
 
 //alert('LOADING_TIME: ' + CONFIG.get('LOADING_TIME'));  // 1
+function isEmpty(str) {
+    return (!str || 0 === str.length);
+}
 
 $(function(){
 	$('#msgLogin').html(new Date());

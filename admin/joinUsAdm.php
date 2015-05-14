@@ -175,9 +175,20 @@ $(function(){
 				$.unblockUI();	
 			},
 			success:function(result){
+				alert(4440);
 				// $('#errAddJob').html(result);
-				$('#errAddJob').html(result.err);
-				$('#divResultAddJob').html(result.successMsg);
+				if(!isEmpty(result.err)){
+					//alert(11);
+					$('#errAddJob').html(result.err);
+					$('#divResultAddJob').html('');
+				}
+
+				if(!isEmpty(result.successMsg)){
+					//alert(22);
+					$('#divResultAddJob').html(result.successMsg);
+					$('#errAddJob').html('');
+				}
+				
 			}
 		});
 	});
