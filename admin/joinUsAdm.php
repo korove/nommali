@@ -117,8 +117,9 @@ $(function(){
 
 		$.ajax({
 			url:url,
-			type:'post',
+			type: 'post',
 			data:data,
+			//dataType: 'json',
 			beforeSend:function(){
 				$.blockUI();
 			},

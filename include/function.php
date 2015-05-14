@@ -6,4 +6,10 @@
 	  $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
 	  return $data;
 	}
+	
+	function prnt($enable, $string) {
+		if($enable){
+			echo "<br/>" . $string;
+		}
+	}
 ?>

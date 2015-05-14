@@ -6,12 +6,15 @@
 	require_once("{$base_dir}database{$ds}conDb.php");
 	require_once("{$base_dir}include{$ds}function.php");
 
-	// if(){
+	$arrOut = array('err'=>'','successMsg'=>'','testMsg'=>'testMsg');
+	$debug = true;
+// 	if(){
 
-	// }
+// 	}
 	// $jobName = isset($_POST['jobName']) ? validateInputData($_POST['jobName']) : "";
 	// $jobAmount = isset($_POST['jobAmount']) ? validateInputData($_POST['jobAmount']) : "";
 	if(empty($_POST['changePaging'])){
+		prnt($debug, 'empty($_POST["changePaging"])');
 		$jobName = empty($_POST['jobName']) ? "" : validateInputData($_POST['jobName']);
 		$jobAmount = empty($_POST['jobAmount']) ? "" : validateInputData($_POST['jobAmount']);
 		$jobActiveQuery = empty($_POST['jobActiveQuery']) ? "" : validateInputData($_POST['jobActiveQuery']);
@@ -19,10 +22,17 @@
 		$_SESSION["jobNameSearch"] = $jobName;
 		$_SESSION["jobAmountSearch"] = $jobAmount;
 		$_SESSION["jobActiveQuerySearch"] = $jobActiveQuery;
+		prnt($debug, "jobName= " . $jobName);
+		prnt($debug, "jobAmount= " . $jobAmount);
+		prnt($debug, "jobActiveQuery= " . $jobActiveQuery);
 	}else{
+		prnt($debug, 'not empty($_POST["changePaging"])');
 		$jobName = $_SESSION["jobNameSearch"];
 		$jobAmount = $_SESSION["jobAmountSearch"];
 		$jobActiveQuery = $_SESSION["jobActiveQuerySearch"];
+		prnt($debug, "jobName= " . $jobName);
+		prnt($debug, "jobAmount= " . $jobAmount);
+		prnt($debug, "jobActiveQuery= " . $jobActiveQuery);
 	}
 	
 
@@ -55,7 +65,7 @@
 
 	// echo "sql = " . $sql;
 	// echo "<br/>$jobActiveQuery = " . $jobActiveQuery;
-
+	prnt($debug, 'SQL Count: ' . $sql);
 	$stmt = $conPDO->prepare($sql);
 	if(!empty($jobName)) $stmt->bindValue(':jobname', "%$jobName%", PDO::PARAM_STR);
 	if(!empty($jobActiveQuery) && $jobActiveQuery !== 'All') $stmt->bindValue(':activeFlg', $jobActiveQuery, PDO::PARAM_STR);
@@ -64,11 +74,13 @@
 		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	} catch (PDOException $e) {
 	    echo 'Connection failed 1: ' . $e->getMessage();
+	    $arrOut['err'] = 'Connection failed 1: ' . $e->getMessage();
 	    exit;
 	}
 
 	$countAll = 0;
 	if(!empty($rows)){
+		prnt($debug, '!empty($rows)');
 		foreach ($rows as $row) {
 			//echo 'row["count(*)"]=' . $row["count(*)"];	
 			$countAll = $row["count(*)"];
@@ -77,14 +89,19 @@
 	// end Count job ########################################
 
 	// Query job ############################################
+	prnt($debug, '$countAll: ' . $countAll);
 	if($countAll > 0){
-
 		$currentPage = empty($_POST['currentPage']) ? 1 : validateInputData($_POST['currentPage']);
 		$limitRow = 5;
 		$limitFirst = ($currentPage - 1) * $limitRow;
 		$limitLast = $limitFirst + $limitRow;
-
 		$totalPage = $countAll / $limitRow;
+		
+		prnt($debug, '$currentPage: ' . $currentPage);
+		prnt($debug, '$limitRow: ' . $limitRow);
+		prnt($debug, '$limitFirst: ' . $limitFirst);
+		prnt($debug, '$limitLast: ' . $limitLast);
+		prnt($debug, '$totalPage: ' . $totalPage);
 		//if($countAll % $limitRow != 0) $totalPage += 1;
 
 		$hasFirstParamBefore = false;
@@ -113,7 +130,7 @@
 		// exit;
 		// echo "sql = " . $sql;
 		// echo "<br/>$jobActiveQuery = " . $jobActiveQuery;
-
+		prnt($debug, 'SQL select * : ' . $sql);
 		$stmt = $conPDO->prepare($sql);
 		if(!empty($jobName)) $stmt->bindValue(':jobname', "%$jobName%", PDO::PARAM_STR);
 		if(!empty($jobActiveQuery) && $jobActiveQuery !== 'All') $stmt->bindValue(':activeFlg', $jobActiveQuery, PDO::PARAM_STR);
@@ -124,16 +141,19 @@
 			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		} catch (PDOException $e) {
 		    echo 'Connection failed 2: ' . $e->getMessage();
+		    $arrOut['err'] = 'Connection failed 2: ' . $e->getMessage();
 		    exit;
 		}
 		// End Query job ############################################
 
 		if(!empty($rows)){
+			prnt($debug, '!empty($rows)');
+			prnt($debug, '$rows size: ' . count($rows));
 			$mapActiveFlg = array('Y'=>'แสดง', 'N'=>'ไม่แสดง');
 			// echo 'not empty';
 			// echo "<table id='tblResultQueryJob' style='color:blue'>";
 			// echo "<table id='tblResultQueryJob' border='1'>";
-
+// 			ob_start();
 		?>
 
 		<div id="paginationdemo" class="demo" style="background-color:transparent;border:0;">
@@ -219,8 +239,10 @@
 			});
 		</script>
 <?php
-
-
+// 			$output = ob_get_contents();
+// 			$arrOut['successMsg'] = $output;
+// 			ob_end_clean();
+// 			echo json_encode($arrOut);
 		}else{
 			echo '<h4 style="color:red;">ไม่พบข้อมูล</h4>';
 		}
@@ -228,4 +250,5 @@
 
 		$hasPosition = false;
 	}
+	
 ?>
