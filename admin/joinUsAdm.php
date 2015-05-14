@@ -106,6 +106,7 @@ $(function(){
 	var editJobDone = false;
 	
 	$('#btnQueryJob').click(function(event){
+		clearMsg();
 		$('#divPrepareAddJob').css({'display':'none'});
 		$('#resultQueryJob').css('display', 'block');
 
@@ -119,17 +120,13 @@ $(function(){
 			type:'post',
 			data:data,
 			beforeSend:function(){
-				// $('#frmQueryJob').block();
 				$.blockUI();
 			},
 			error:function(xhr, textStatus){
-				// alert('xhr:'+ xhr +', textStatus:'+textStatus);
 				var msg = 'xhr: ' + xhr.status;
-				//alert(msg);
 				$('#errQueryJob').html('<h4 style="color:red;">msg:' + msg+"</h4>");
 			},
 			complete:function(){
-				// $('#frmQueryJob').unblock();
 				$.unblockUI();	
 			},
 			success:function(result){
@@ -139,6 +136,7 @@ $(function(){
 	});
 
 	$('#btnPrepareAddJob').click(function(event){
+		clearMsg();
 		event.preventDefault();
 		$('#divPrepareAddJob').css('display', 'block');
 		$('#resultQueryJob').css('display', 'none');
@@ -147,13 +145,11 @@ $(function(){
 	$('#frmAddJob td:first-child').css({'text-align':'right'});
 
 	$('#btnAddJob').click(function(event){
+		clearMsg();
 		event.preventDefault();
 
 		var url='/nommali/job/addJob.php';
 		var data=$('#frmAddJob').serializeArray();
-		/*$.each(data, function(i, field){
-	        $("#errAddJob").append(field.name + ":" + field.value + ", ");
-	    });*/
 
 		$.ajax({
 			url:url,
@@ -161,32 +157,23 @@ $(function(){
 			data:data,
 			dataType:'json',
 			beforeSend:function(){
-				// $('#frmQueryJob').block();
 				$.blockUI();
 			},
 			error:function(xhr, textStatus){
-				// alert('xhr:'+ xhr +', textStatus:'+textStatus);
 				var msg = 'xhr: ' + xhr.status;
-				//alert(msg);
 				$('#errAddJob').html('<h4 style="color:red;">msg:' + msg+"</h4>");
 			},
 			complete:function(){
-				// $('#frmQueryJob').unblock();
 				$.unblockUI();	
 			},
 			success:function(result){
-				//alert(4440);
-				// $('#errAddJob').html(result);
 				if(!isEmpty(result.err)){
-					//alert(11);
-					//infoMsg
 					clearMsg();
 					$('#errAddJob').html(result.err);
 					$('#divResultAddJob').html('');
 				}
 
 				if(!isEmpty(result.successMsg)){
-					//alert(22);
 					$('#divPrepareAddJob').hide();
 					clearMsg();
 					$('#divResultAddJob').html(result.successMsg);
@@ -221,7 +208,6 @@ $(function(){
 			if(index == 0){
 				jobName = item.innerHTML;
 				var jobNameHtml = "";
-				//alert(jobName);
 			}else if(index == 1){
 				jobDetail = item.innerHTML;
 			}else if(index == 2){
@@ -236,9 +222,7 @@ $(function(){
 			}else if(index == 4){
 				tdEdit = item;
 				tdEditInner = tdEdit.innerHTML.trim();
-				//alert(tdEditInner);
 			}
-			//alert(index);
 		});
 
 		$('#divEditJob').css({'display':'block'});
@@ -267,7 +251,6 @@ $(function(){
 		var result = confirm("คุณต้องการลบตำแหน่ง " + jobName + " ใช่หรือไม่");
 		if (result) {
 		    //Logic to delete the item
-		    //alert('Yes');
 		    var url='/nommali/job/deleteJob.php';
 			var data={jobName: jobName};
 
@@ -276,17 +259,13 @@ $(function(){
 				type:'post',
 				data:data,
 				beforeSend:function(){
-					// $('#frmQueryJob').block();
 					$.blockUI();
 				},
 				error:function(xhr, textStatus){
-					// alert('xhr:'+ xhr +', textStatus:'+textStatus);
 					var msg = 'xhr: ' + xhr.status;
-					//alert(msg);
 					$('#errQueryJob').html('<h4 style="color:red;">msg:' + msg+"</h4>");
 				},
 				complete:function(){
-					// $('#frmQueryJob').unblock();
 					$.unblockUI();	
 				},
 				success:function(result){
@@ -491,7 +470,7 @@ $(function(){
 	</fieldset>
 </div>
 <div id="errAddJob" style="color:red;" class="errMsg"></div>
-<div id="divResultAddJob">
+<div id="divResultAddJob" class="infoMsg">
 	
 </div>
 
