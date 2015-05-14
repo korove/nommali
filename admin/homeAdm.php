@@ -110,6 +110,7 @@
 	<link rel="stylesheet" type="text/css" href="/nommali/css/font-awesome-4.3.0/css/font-awesome.min.css">
 	
 	<script src="/nommali/js/homeScript.js"></script>
+	<script src="/nommali/js/numberformat.js"></script>
 	<script>
 		// $(function(){
 		// 	var welcomeAdminPage=location.pathname+'admin/welcomeAdmin.php';

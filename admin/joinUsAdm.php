@@ -181,6 +181,7 @@ $(function(){
 					//alert(11);
 					$('#errAddJob').html(result.err);
 					$('#divResultAddJob').html('');
+					$('.errMsg').hide();
 				}
 
 				if(!isEmpty(result.successMsg)){
@@ -414,7 +415,8 @@ $(function(){
 				<tr>
 					<td>จำนวนที่รับ</td>
 					<td><input type="text" name="jobAmountEdit" id="jobAmountEdit" 
-						   style="width:100px;"	class="inputNumber" maxlength="2"></td>
+							onkeypress="return numberformat.keyPressIntegerOnly(this,event)"
+						    style="width:100px;"	class="inputNumber" maxlength="2"></td>
 				</tr>
 
 				<tr>
@@ -462,7 +464,8 @@ $(function(){
 				<tr>
 					<td>จำนวนที่รับ</td>
 					<td><input type="text" name="jobAmountAdd" id="jobAmountAdd" class="form-control"
-						   style="width:100px;"	class="inputNumber" maxlength="2"></td>
+							onkeypress="return numberformat.keyPressIntegerOnly(this,event)"
+						    style="width:100px;"	class="inputNumber" maxlength="2"></td>
 				</tr>
 
 				<tr>
@@ -484,7 +487,7 @@ $(function(){
 		
 	</fieldset>
 </div>
-<div id="errAddJob" style="color:red;"></div>
+<div id="errAddJob" style="color:red;" class="errMsg"></div>
 <div id="divResultAddJob">
 	
 </div>
