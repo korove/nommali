@@ -245,7 +245,7 @@ $(function(){
 // 		for(var key in data){
 // 			alert('key = ' + key);
 // 		}
-		alert('data[0].value = ' + data[0].value);
+		//alert('data[0].value = ' + data[0].value);
 // 		for(var key in data[0]){
 // 			alert('key = ' + key);
 // 		}
