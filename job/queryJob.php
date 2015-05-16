@@ -95,7 +95,7 @@
 		$limitRow = 5;
 		$limitFirst = ($currentPage - 1) * $limitRow;
 		$limitLast = $limitFirst + $limitRow;
-		$totalPage = $countAll / $limitRow;
+		$totalPage = ceil($countAll / $limitRow);
 		
 		prnt($debug, '$currentPage: ' . $currentPage);
 		prnt($debug, '$limitRow: ' . $limitRow);
@@ -125,7 +125,8 @@
 			}
 		}
 
-		$sql .=	" limit {$limitFirst},{$limitLast}";
+// 		$sql .=	" limit {$limitFirst},{$limitLast}";
+		$sql .=	" limit {$limitFirst},{$limitRow}";
 		// echo $sql;
 		// exit;
 		// echo "sql = " . $sql;
