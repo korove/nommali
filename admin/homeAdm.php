@@ -158,12 +158,6 @@
 
 
 		<script src="/nommali/jPaginate/jquery.paginate.js" type="text/javascript"></script>
-		<script type="text/javascript">
-		$(function() {
-			
-			
-		});
-		</script>
 
 </body>
 
