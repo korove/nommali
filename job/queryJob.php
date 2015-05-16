@@ -212,6 +212,7 @@
 			$('#jobDetailEdit').val(jobDetail);
 			$('#jobAmountEdit').val(jobAmount);
 			$('#jobActiveEdit').val(jobActiveFlg);
+			$('#editFromPageNumber').val(<?php echo $currentPage ?>);
 		});
 		</script>
 <?php

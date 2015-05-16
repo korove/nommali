@@ -238,6 +238,21 @@ $(function(){
 
 		var url='/nommali/job/editJob.php';
 		var data=$('#frmEditJob').serializeArray();
+		var editFromPageNumber = data[0].value;
+// 		for(var key in data){
+// 			alert('key = ' + key);
+// 		}
+// 		alert(typeof data);
+		//document.write(data);
+// 		console.debug("%o", data);
+// 		alert('data[0] = ' + data[0]);
+		alert('data[0].value = ' + data[0].value);
+// 		for(var key in data[0]){
+// 			alert('key = ' + key);
+// 		}
+// 		alert('data[1] = ' + data[1]);
+// 		alert('data[0].editFromPageNumber = ' + data[0].editFromPageNumber);
+		
 		/*$.each(data, function(i, field){
 	        $("#errAddJob").append(field.name + ":" + field.value + ", ");
 	    });*/
@@ -272,7 +287,7 @@ $(function(){
 // 			  		event.preventDefault();
 
 					var url='/nommali/job/queryJob.php';
-					var data={currentPage:<?php echo empty($_SESSION['currentPage']) ? 1 : $_SESSION['currentPage']?>,changePaging:'true'};
+					var data={currentPage:editFromPageNumber, changePaging:'true'};
 
 					$.ajax({
 						url:url,
@@ -359,6 +374,7 @@ $(function(){
 <div id="divEditJob" style="margin-top:5px;display:none;">
 	<fieldset><legend>แก้ไขตำแหน่งงาน</legend>
 		<form id="frmEditJob">
+			<input id="editFromPageNumber" name="editFromPageNumber" type="hidden" value="1" />
 			<table >
 				<tr>
 					<td>ชื่อตำแหน่ง</td>
