@@ -217,6 +217,7 @@
 		</script>
 <?php
 		//echo "<table id='tblResultQueryJob' class='table'>";
+		echo '<input id="deleteFromPageNumber" name="deleteFromPageNumber" type="hidden" value="'. $currentPage .'" />';
 		echo "<table class='table table-striped table-bordered '>";
 		echo "<tr>";
 		echo "<th>ชื่อตำแหน่ง</th>";

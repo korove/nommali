@@ -216,13 +216,43 @@ $(function(){
 				},
 				error:function(xhr, textStatus){
 					var msg = 'xhr: ' + xhr.status;
-					$('#errQueryJob').html('<h4 style="color:red;">msg:' + msg+"</h4>");
+					$('#errQueryJob').html('msg:' + msg+"");
 				},
 				complete:function(){
 					$.unblockUI();	
 				},
 				success:function(result){
-					$('#resultQueryJob').html(result.testMsg);
+					//$('#resultQueryJob').html(result.testMsg);
+					if(isEmpty(result.err)){
+						//alert(111);
+						var deleteFromPageNumber = $('#deleteFromPageNumber').val();
+						var url='/nommali/job/queryJob.php';
+						var data={currentPage:deleteFromPageNumber, changePaging:'true'};
+
+						$.ajax({
+							url:url,
+							type:'post',
+							data:data,
+							beforeSend:function(){
+								// $('#frmQueryJob').block();
+								$.blockUI();
+							},
+							error:function(xhr, textStatus){
+								// alert('xhr:'+ xhr +', textStatus:'+textStatus);
+								var msg = 'xhr: ' + xhr.status;
+								//alert(msg);
+								$('#errQueryJob').html('<h4 style="color:red;">msg:' + msg+"</h4>");
+							},
+							complete:function(){
+								// $('#frmQueryJob').unblock();
+								$.unblockUI();	
+							},
+							success:function(result){
+								$('#resultQueryJob').html(result);
+							}
+						});
+					}
+					//successMsg
 				}
 			});
 		}else{
