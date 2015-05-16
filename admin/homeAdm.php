@@ -153,42 +153,6 @@
 		</div>
 
 		<div id="footerAdm">
-			<div class="demo">
-                <h1>Demo 1</h1>
-                <div id="demo1">                   
-                </div>
-            </div>
-			<div class="demo">
-                <h1>Demo 2</h1>
-                <div id="demo2">                   
-                </div>
-            </div>
-			<div id="paginationdemo" class="demo">
-                <h1>Demo 5</h1>
-                <div id="p1" class="pagedemo _current" style="">Page 1</div>
-				<div id="p2" class="pagedemo" style="display:none;">Page 2</div>
-				<div id="p3" class="pagedemo" style="display:none;">Page 3</div>
-				<div id="p4" class="pagedemo" style="display:none;">Page 4</div>
-				<div id="p5" class="pagedemo" style="display:none;">Page 5</div>
-				<div id="p6" class="pagedemo" style="display:none;">Page 6</div>
-				<div id="p7" class="pagedemo" style="display:none;">Page 7</div>
-				<div id="p8" class="pagedemo" style="display:none;">Page 8</div>
-				<div id="p9" class="pagedemo" style="display:none;">Page 9</div>
-				<div id="p10" class="pagedemo" style="display:none;">Page 10</div>
-				<div id="demo5">                   
-                </div>
-            </div>
-            
-			<div class="demo">
-                <h1>Demo 3</h1>
-                <div id="demo3">                   
-                </div>
-            </div>
-			<div class="demo">
-                <h1>Demo 4</h1>
-                <div id="demo4">                   
-                </div>
-            </div>
 			<?php include("{$base_dir}admin{$ds}footerAdm.php"); ?>
 		</div>
 

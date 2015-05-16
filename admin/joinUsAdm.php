@@ -185,8 +185,8 @@ $(function(){
 		});
 	});
 
-	$('body').on('click','#tblResultQueryJob .btnEditJobRow',function(){
-		// alert(111);
+	/* $('body').on('click','#tblResultQueryJob .btnEditJobRow',function(){
+		alert(111);
 		event.preventDefault();
 
 		var mapJobActive = '{"แสดง":"Y","ไม่แสดง":"N"}';
@@ -234,7 +234,7 @@ $(function(){
 		$('#jobDetailEdit').val(jobDetail);
 		$('#jobAmountEdit').val(jobAmount);
 		$('#jobActiveEdit').val(jobActiveFlg);
-	});
+	}); */
 
 	$('body').on('click','.btnDeleteJobRow',function(){
 

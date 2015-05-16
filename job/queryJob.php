@@ -7,7 +7,7 @@
 	require_once("{$base_dir}include{$ds}function.php");
 
 	$arrOut = array('err'=>'','successMsg'=>'','testMsg'=>'testMsg');
-	$debug = true;
+	$debug = false;
 // 	if(){
 
 // 	}
@@ -158,6 +158,59 @@
 		?>
 
 		<div id="paginationdemo" class="demo" style="background-color:transparent;border:0;">
+		<script>
+// 		$('#tblResultQueryJob .btnEditJobRow').click(function(event){
+		$('.btnEditJobRow').click(function(event){
+			//alert(111);
+			event.preventDefault();
+
+			var mapJobActive = '{"แสดง":"Y","ไม่แสดง":"N"}';
+			var mapJobActiveObj = JSON.parse(mapJobActive);
+			// alert(mapJobActiveObj['แสดง']);
+			// var msg = event.target.className;
+			// var msg = event.target.innerHTML;
+			// var msg = $(this).parent().parent().children('td:first-child').html();
+
+			$currentTr = $(this).parent().parent();
+			$tdChilds = $currentTr.children();
+			var jobName = "";
+			var jobDetail = "";
+			var jobAmount = "";
+			var jobActiveFlg = "";
+			var tdEdit = "";
+			var tdEditInner = "";
+
+			$.each($tdChilds, function(index,item){
+				if(index == 0){
+					jobName = item.innerHTML;
+					var jobNameHtml = "";
+				}else if(index == 1){
+					jobDetail = item.innerHTML;
+				}else if(index == 2){
+					jobAmount = item.innerHTML;
+				}else if(index == 3){
+					if(!item.innerHTML){
+						jobActiveFlg = 'แสดง';
+					}else{
+						jobActiveFlg = item.innerHTML.trim();	
+					}
+					jobActiveFlg = mapJobActiveObj[jobActiveFlg];
+				}else if(index == 4){
+					tdEdit = item;
+					tdEditInner = tdEdit.innerHTML.trim();
+				}
+			});
+
+			$('#divEditJob').css({'display':'block'});
+			var jsonData = {jobName:jobName, jobDetail:jobDetail, jobAmount:jobAmount,
+							jobActiveFlg:jobActiveFlg};
+			jobNameForEdit = jobName;
+			$('#jobNameEdit').val(jobName);
+			$('#jobDetailEdit').val(jobDetail);
+			$('#jobAmountEdit').val(jobAmount);
+			$('#jobActiveEdit').val(jobActiveFlg);
+		});
+		</script>
 <?php
 		//echo "<table id='tblResultQueryJob' class='table'>";
 		echo "<table class='table table-striped table-bordered '>";
