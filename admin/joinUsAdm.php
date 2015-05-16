@@ -139,8 +139,11 @@ $(function(){
 	$('#btnPrepareAddJob').click(function(event){
 		clearMsg();
 		event.preventDefault();
-		$('#divPrepareAddJob').css('display', 'block');
 		$('#resultQueryJob').css('display', 'none');
+		$('#divPrepareAddJob').css('display', 'block');
+// 		$('#jobNameAdd').focus();
+		document.getElementById('jobNameAdd').scrollIntoView();
+		$('#jobNameAdd').focus();
 	});
 
 	$('#frmAddJob td:first-child').css({'text-align':'right'});
@@ -242,20 +245,10 @@ $(function(){
 // 		for(var key in data){
 // 			alert('key = ' + key);
 // 		}
-// 		alert(typeof data);
-		//document.write(data);
-// 		console.debug("%o", data);
-// 		alert('data[0] = ' + data[0]);
 		alert('data[0].value = ' + data[0].value);
 // 		for(var key in data[0]){
 // 			alert('key = ' + key);
 // 		}
-// 		alert('data[1] = ' + data[1]);
-// 		alert('data[0].editFromPageNumber = ' + data[0].editFromPageNumber);
-		
-		/*$.each(data, function(i, field){
-	        $("#errAddJob").append(field.name + ":" + field.value + ", ");
-	    });*/
 
 		$.ajax({
 			url:url,
@@ -463,6 +456,7 @@ $(function(){
 		
 	</fieldset>
 </div>
+<br/>
 <div id="errAddJob" style="color:red;" class="errMsg"></div>
 <div id="divResultAddJob" class="infoMsg">
 	

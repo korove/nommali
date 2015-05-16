@@ -71,9 +71,9 @@
 			$affected_rows = $stmt->rowCount();
 // 			$arrOut['successMsg'] = 'affected_rows = ' . $affected_rows;
 			if($affected_rows > 0){
-				$arrOut['successMsg'] = "<h4 style='color:blue;'>เพิ่มข้อมูลเรียบร้อยแล้ว</h4>";
+				$arrOut['successMsg'] = "เพิ่มข้อมูลเรียบร้อยแล้ว";
 			}else{
-				$arrOut['err'] = "<h4 style='color:red;'>ไม่สามารถเพิ่มข้อมูลได้</h4>";
+				$arrOut['err'] = "ไม่สามารถเพิ่มข้อมูลได้";
 			}
 			
 			
@@ -81,10 +81,10 @@
 			//var_dump($e->errorInfo);
 			if($e->errorInfo[1] == 1062){
 				// echo 'มีข้อมูลนี้อยู่แล้วในระบบ';
-				$arrOut['err'] = "<h4 style='color:red;'>ไม่สามารถเพิ่มข้อมูลได้ เนื่องจากมีข้อมูลนี้อยู่แล้วในระบบ</h4>";
+				$arrOut['err'] = "ไม่สามารถเพิ่มข้อมูลได้ เนื่องจากมีข้อมูลนี้อยู่แล้วในระบบ";
 			}else{
 			    // echo 'Error: ' . $e->getMessage();
-			    $arrOut['err'] = "<h4 style='color:red;'>Error: " . $e->getMessage() . "</h4>";
+			    $arrOut['err'] = "Error: " . $e->getMessage() . "";
 			}
 		}
 	}

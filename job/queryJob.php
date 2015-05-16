@@ -7,14 +7,13 @@
 	require_once("{$base_dir}include{$ds}function.php");
 
 	$arrOut = array('err'=>'','successMsg'=>'','testMsg'=>'testMsg');
-	$debug = true;
+	$debug = false;
 // 	if(){
 
 // 	}
 	// $jobName = isset($_POST['jobName']) ? validateInputData($_POST['jobName']) : "";
 	// $jobAmount = isset($_POST['jobAmount']) ? validateInputData($_POST['jobAmount']) : "";
 	$currentPage = empty($_POST['currentPage']) ? 1 : validateInputData($_POST['currentPage']);
-	prnt($debug, "currentPage= " . $currentPage);
 	if(empty($_POST['changePaging'])){
 		prnt($debug, 'empty($_POST["changePaging"])');
 		$jobName = empty($_POST['jobName']) ? "" : validateInputData($_POST['jobName']);
@@ -94,7 +93,6 @@
 	prnt($debug, '$countAll: ' . $countAll);
 	if($countAll > 0){
 		$_SESSION['currentPage'] = $currentPage;
-		echo '$_SESSION["currentPage"] = ' . $_SESSION['currentPage'];   
 		$limitRow = 5;
 		$limitFirst = ($currentPage - 1) * $limitRow;
 		$limitLast = $limitFirst + $limitRow;
@@ -213,6 +211,8 @@
 			$('#jobAmountEdit').val(jobAmount);
 			$('#jobActiveEdit').val(jobActiveFlg);
 			$('#editFromPageNumber').val(<?php echo $currentPage ?>);
+			//$('#jobDetailEdit').focus();
+			document.getElementById('jobDetailEdit').scrollIntoView();
 		});
 		</script>
 <?php
@@ -283,7 +283,7 @@
 														// alert('xhr:'+ xhr +', textStatus:'+textStatus);
 														var msg = 'xhr: ' + xhr.status;
 														//alert(msg);
-														$('#errQueryJob').html('<h4 style="color:red;">msg:' + msg+"</h4>");
+														$('#errQueryJob').html('msg:' + msg+"");
 													},
 													complete:function(){
 														// $('#frmQueryJob').unblock();
