@@ -114,11 +114,6 @@
 	<script src="/nommali/js/homeScript.js"></script>
 	<script>
 		$(document).ready(function(){
-			/* $('a').click(function(e){
-			   e.preventDefault();
-			   $("#contentAdm").load($(this).attr('href'));
-			}); */
-			
 			$(".nav a").on("click", function(e) {
 			   e.preventDefault();
 			   e.stopPropagation();

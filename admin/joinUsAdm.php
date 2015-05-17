@@ -108,6 +108,7 @@ $(function(){
 	$('#btnQueryJob').click(function(event){
 		clearMsg();
 		$('#divPrepareAddJob').css({'display':'none'});
+		$('#divEditJob').css({'display':'none'});
 		$('#resultQueryJob').css('display', 'block');
 
 		event.preventDefault();
@@ -140,6 +141,7 @@ $(function(){
 		clearMsg();
 		event.preventDefault();
 		$('#resultQueryJob').css('display', 'none');
+		$('#divEditJob').css('display', 'none');
 		$('#divPrepareAddJob').css('display', 'block');
 // 		$('#jobNameAdd').focus();
 		document.getElementById('jobNameAdd').scrollIntoView();
@@ -402,18 +404,18 @@ $(function(){
 				<tr>
 					<td>ชื่อตำแหน่ง</td>
 					<td><input type="text" name="jobNameEdit" id="jobNameEdit" 
-							class="readonlyStyle" 
+							class="readonlyStyle form-control"
 						   style="width:200px;" maxlength="255" readonly="true"></td>
 				</tr>
 
 				<tr>
 					<td>รายละเอียดงาน</td>
-					<td><textarea name="jobDetailEdit" id="jobDetailEdit" cols="70" rows="7"></textarea></td>
+					<td><textarea name="jobDetailEdit" id="jobDetailEdit" cols="70" rows="7" class="form-control"></textarea></td>
 				</tr>
 
 				<tr>
 					<td>จำนวนที่รับ</td>
-					<td><input type="text" name="jobAmountEdit" id="jobAmountEdit" 
+					<td><input type="text" name="jobAmountEdit" id="jobAmountEdit" class="form-control"
 							onkeypress="return numberformat.keyPressIntegerOnly(this,event)"
 						    style="width:100px;"  maxlength="2"></td>
 				</tr>
@@ -421,7 +423,7 @@ $(function(){
 				<tr>
 					<td>เปิดให้แสดง</td>
 					<td>
-						<select id="jobActiveEdit" name="jobActiveEdit">
+						<select id="jobActiveEdit" name="jobActiveEdit" class="form-control" style='max-width: 100px;'>
 						  <option value="Y" selected>แสดง</option>
 						  <option value="N">ไม่แสดง</option>
 						</select>
@@ -431,8 +433,8 @@ $(function(){
 				<tr>
 					<td></td>
 					<td>
-						<button id="btnEditJobDone">แก้ไข</button>
-						<button id="btnEditJobCancel" style="margin-left:5px;">ยกเลิก</button>
+						<button id="btnEditJobDone" class="btn btn-default">แก้ไข</button>
+						<button id="btnEditJobCancel" class="btn btn-default" style="margin-left:5px;">ยกเลิก</button>
 					</td>
 				</tr>
 			</table>
