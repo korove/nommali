@@ -113,26 +113,17 @@
 	<script src="/nommali/js/numberformat.js"></script>
 	<script src="/nommali/js/homeScript.js"></script>
 	<script>
-		$(document).ready(function(){
-			/* $('a').click(function(e){
-			   e.preventDefault();
-			   $("#contentAdm").load($(this).attr('href'));
-			}); */
-			
-			$(".nav a").on("click", function(e) {
-			   e.preventDefault();
-			   e.stopPropagation();
-			   var url = $(this).attr('href');//  /nommali/admin/joinUsAdm.php
-			   //console.log(this);
-			   //alert(url);
-			   //alert($(this).html());
-			   $("#contentAdm").load(url);
-			   //$("#contentAdm").load($(this).attr('href'));
+		//alert(222);
+		$(function(){
+			//alert(33);
+			$(".nav li").on("click", function(e) {
+// 			    alert(44);
 				$(".nav li").removeClass("active");
-				$(this).parent().addClass("active");
+				$(this).addClass("active");
+				//e.preventDefault();
 			});
-			
 		});
+		
 		/* $(function(){
 			var welcomeAdminPage=location.pathname+'admin/welcomeAdmin.php';
 			// alert(welcomeAdminPage);
@@ -150,11 +141,24 @@
 		</div>
 
 		<div id="navAdm">
-			<?php include "{$base_dir}admin{$ds}headerAdm.php"; ?>
+			<?php include "{$base_dir}headerAdm.php"; ?>
 		</div>
 
 		<div id="contentAdm" style="background-color: #C7F6F9;">
-			<?php include("{$base_dir}admin{$ds}homeContentAdm.php"); ?>
+			<?php
+
+				$page = '';
+				if(isset($_GET['page'])){
+					$page = $_GET['page'];
+				}
+				
+				if (!empty($page) && ($page != 'contentAdm')) {
+					$page .= '.php';
+					include($root . "nommali/admin/". $page);
+				} else {
+					echo '<h4>this is admin home content</h4>';
+				}
+			?>
 		</div>
 
 		<div id="footerAdm">
