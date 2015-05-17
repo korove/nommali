@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php 
 	$ds = DIRECTORY_SEPARATOR;
 	$base_dir = realpath(dirname(__FILE__)  . $ds . '..') . $ds;
@@ -104,21 +105,31 @@
 	<script src="/nommali/js/jquery.blockUI.js"></script>
 	<script src="/nommali/js/jquery.form.min.js"></script>
 	<script src="/nommali/bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
-	<script src="/nommali//jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+	<script src="/nommali/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
 	<link rel="stylesheet" type="text/css" href="/nommali/css/home.css">
 	<link rel="stylesheet" type="text/css" href="/nommali/css/admin.css">
 	<link rel="stylesheet" type="text/css" href="/nommali/css/font-awesome-4.3.0/css/font-awesome.min.css">
 	
-	<script src="/nommali/js/homeScript.js"></script>
 	<script src="/nommali/js/numberformat.js"></script>
+	<script src="/nommali/js/homeScript.js"></script>
 	<script>
-		// $(function(){
-		// 	var welcomeAdminPage=location.pathname+'admin/welcomeAdmin.php';
-		// 	// alert(welcomeAdminPage);
-		// 	$('#welcomeAdmin').load(welcomeAdminPage, function() {
-		// 	    //$(this).fadeIn();
-		// 	});
-		// });
+		//alert(222);
+		$(function(){
+			//alert(33);
+			$(".nav li").on("click", function() {
+			    alert(44);
+			//   $(".nav li").removeClass("active");
+			//   $(this).addClass("active");
+			});
+		});
+		
+		/* $(function(){
+			var welcomeAdminPage=location.pathname+'admin/welcomeAdmin.php';
+			// alert(welcomeAdminPage);
+			$('#welcomeAdmin').load(welcomeAdminPage, function() {
+			    //$(this).fadeIn();
+			});
+		}); */
 	</script>
 </head>
 

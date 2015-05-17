@@ -1,6 +1,10 @@
 <div >
-	<ul class="nav nav-tabs">
-	  <li role="presentation" class="active" ><a href=homeAdm.php?page=contentAdm" class="glyphicon glyphicon-home"> Home</a></li>
+	<script type="text/javascript">
+	    
+	</script>
+	</script>
+	<ul class="nav nav-tabs" id="navMenuBar">
+	  <li role="presentation" class="active" ><a href=homeAdm.php?page=contentAdm" class="glyphicon glyphicon-home" > Home</a></li>
 	  <li role="presentation"><a href="homeAdm.php?page=productAdm" class="glyphicon glyphicon-briefcase"> Product</a></li>
 	  <li role="presentation"><a href="#" class=" glyphicon glyphicon-bullhorn"> Activity</a></li>
 	  <li role="presentation"><a href="#" class="glyphicon glyphicon-tree-deciduous"> CSR</a></li>
