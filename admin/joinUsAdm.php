@@ -405,7 +405,7 @@ $(function(){
 					<td>ชื่อตำแหน่ง</td>
 					<td><input type="text" name="jobNameEdit" id="jobNameEdit" 
 							class="readonlyStyle form-control"
-						   style="width:200px;" maxlength="255" readonly="true"></td>
+						   style="width:200px;" maxlength="255" readonly></td>
 				</tr>
 
 				<tr>
