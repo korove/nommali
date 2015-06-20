@@ -1,3 +1,13 @@
+<div>
+<?php 
+	include("{$base_dir}mali{$ds}IMGallery{$ds}imgallery-no-jquery.php");
+// 	include "/nommali_Project/mali/IMGallery/imgallery-no-jquery.php";
+	gallery_thumb_height("100px");
+	gallery_echo_img("news/news1.png");
+	gallery_echo_img("news/video1.png");
+?>
+</div>
+
 <div class="box2">
 	<div class="column-6">
 		<div id="about-logo"></div>
