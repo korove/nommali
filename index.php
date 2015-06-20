@@ -1,9 +1,9 @@
 <?php 
 	session_start(); 
-	if(empty($_SESSION['sess_admin'])){
-		header("Refresh: 0; url=/nommali/portal.php");
-		exit;
-	}
+// 	if(empty($_SESSION['sess_admin'])){
+// 		header("Refresh: 0; url=/nommali/portal.php");
+// 		exit;
+// 	}
 
 	include('./include/function.php');
 ?>
@@ -40,7 +40,7 @@
 
 	<div id="wrapper">
 		<div id="header">
-			<div ><img src="logomali.jpg" style="width:120px;" /></div>
+			<div align="center" style="position:absolute;width:100%;z-index: 1;"><img src="logomali.jpg" style="width:120px;" /></div>
 			<?php include 'header.php'; ?>
 		</div>
 

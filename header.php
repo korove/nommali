@@ -1,4 +1,4 @@
-<div >
+<div style="position:relative;z-index: 2;">
 	<ul class="nav nav-tabs">
 	  <li role="presentation" class="active" ><a href="index.php" class="glyphicon glyphicon-home"> Home</a></li>
 	  <li role="presentation"><a href="index.php?page=aboutUs" class="glyphicon glyphicon-user" > เกี่ยวกับเรา</a></li>

@@ -4,9 +4,9 @@
 		}
 
 div#header {
-
+	position: relative;
 	background: #444444;
-
+	height: 350px;
 }
 
 div#navigation {
