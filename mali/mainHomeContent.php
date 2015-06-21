@@ -31,13 +31,13 @@
 	}
 	printTest($c);
 	//$rows = queryCmMasterOr($c);
-	$rows = queryCmMasterHome();
+	$newsList = queryCmMasterHome('news');
 	
-	if(empty($rows)){
-		prnt($debug, 'empty($rows)' );
+	if(empty($newsList)){
+		prnt($debug, 'empty($newsList)' );
 	}else{
-		prnt($debug, '$rows size: ' . count($rows));
-		//var_dump($rows);
+		prnt($debug, '$newsList size: ' . count($newsList));
+		//var_dump($newsList);
 	}
 	
 ?>
@@ -70,8 +70,8 @@
 		</div>
 		<?php 
 		
-			if(!empty($rows)){
-				foreach ($rows as $row) {
+			if(!empty($newsList)){
+				foreach ($newsList as $row) {
 					echo '<div class="box3-content1">';
 					//$countAll = $row["count(*)"];
 					gallery_echo_img("{$pathImgTopic}{$row['image']}");

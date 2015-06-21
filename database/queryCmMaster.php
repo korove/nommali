@@ -1,14 +1,15 @@
 <?php
 
-function queryCmMasterHome(){
+function queryCmMasterHome($type){
 	$sql = " select * from cm_master "
 		.  " where display_home = 'Y'"
-		.  " and   type = 'news'"		
+		.  " and   type = :type"		
 		.  " order by sequence"		
 	;
 	
 	global $conPDO;
 	$stmt = $conPDO->prepare($sql);
+	if(!empty($type)) $stmt->bindValue(':type', "$type", PDO::PARAM_STR);
 	
 	$rows = null;
 	try{
