@@ -2,7 +2,9 @@
 
 function queryCmMasterHome(){
 	$sql = " select * from cm_master "
-		.  " where display_home = 'Y'"				
+		.  " where display_home = 'Y'"
+		.  " and   type = 'news'"		
+		.  " order by sequence"		
 	;
 	
 	global $conPDO;
