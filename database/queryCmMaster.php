@@ -40,10 +40,10 @@ function queryCmMasterOr($c){
 
 	if(!empty($rowid)){
 		if(!$hasFirstParamBefore){
-			$sql .=	" where rowid = :rowid";
+			$sql .=	" where row_id = :rowid";
 			$hasFirstParamBefore = true;
 		}else{
-			$sql .=	" or rowid = :rowid";
+			$sql .=	" or row_id = :rowid";
 		}
 	}
 
