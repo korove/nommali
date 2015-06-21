@@ -9,6 +9,8 @@
 	gallery_echo_img("img/imgTopic/img_news_20150621_170422.png");
 	gallery_echo_img("img/imgTopic/img_news_20150621_170511.png");
 	$debug = true;
+	$limitHomeNews = 6;
+	$limitHomeActivity = 3;
 	
 	class CmMaster{
 		public $rowid;
@@ -31,13 +33,13 @@
 	}
 	printTest($c);
 	//$rows = queryCmMasterOr($c);
-	$newsList = queryCmMasterHome('news');
+	$rows = queryCmMasterHome('news');
 	
-	if(empty($newsList)){
-		prnt($debug, 'empty($newsList)' );
+	if(empty($rows)){
+		prnt($debug, 'empty($rows)' );
 	}else{
-		prnt($debug, '$newsList size: ' . count($newsList));
-		//var_dump($newsList);
+		prnt($debug, '$rows size: ' . count($rows));
+		//var_dump($rows);
 	}
 	
 ?>
@@ -70,8 +72,18 @@
 		</div>
 		<?php 
 		
-			if(!empty($newsList)){
-				foreach ($newsList as $row) {
+			if(!empty($rows)){
+				for ($i=0;$i < $limitHomeNews;$i++){
+					echo '<div class="box3-content1">';
+					//$countAll = $row["count(*)"];
+					gallery_echo_img("{$pathImgTopic}{$rows[$i]['image']}");
+					// 					echo "<img src=\"{$pathImgTopic}{$row['image']}\">";
+					echo "<p>{$rows[$i]['topic']}</p>";
+					echo '<a href="#">อ่านต่อ</a>';
+					echo '</div>';
+				}
+
+				/* foreach ($rows as $row) {
 					echo '<div class="box3-content1">';
 					//$countAll = $row["count(*)"];
 					gallery_echo_img("{$pathImgTopic}{$row['image']}");
@@ -79,7 +91,7 @@
 					echo "<p>{$row['topic']}</p>";
 					echo '<a href="#">อ่านต่อ</a>';
 					echo '</div>';
-				}
+				} */
 			}
 		
 		?>
@@ -111,21 +123,19 @@
 			<h2>กิจกรรม</h2>
 			<a href="#"><div class="more">MORE +</div></a>
 		</div>
-		<div class="box3-content1">
-			<img src="news/news1.png">
-			<p>บริษัทอุตสาหกรรมไทยได้รับรางวัลชั้นน้ำ</p>
-			<a href="#">อ่านต่อ</a>
-		</div>
-		<div class="box3-content1">
-			<img src="news/news2.png">
-			<p>บริษัทอุตสาหกรรมไทยได้รับรางวัลชั้นน้ำ</p>
-			<a href="#">อ่านต่อ</a>
-		</div>
-		<div class="box3-content1">
-			<img src="news/news3.png">
-			<p>บริษัทอุตสาหกรรมไทยได้รับรางวัลชั้นน้ำ</p>
-			<a href="#">อ่านต่อ</a>
-		</div>
+		<?php 
+			$rows = queryCmMasterHome('activity');
+			for ($i=0;$i <= $limitHomeActivity - 1 ;$i++){
+			//for ($i=0;$i < count($rows);$i++){
+				echo '<div class="box3-content1">';
+				//$countAll = $row["count(*)"];
+				gallery_echo_img("{$pathImgTopic}{$rows[$i]['image']}");
+				// 					echo "<img src=\"{$pathImgTopic}{$row['image']}\">";
+				echo "<p>{$rows[$i]['topic']}</p>";
+				echo '<a href="#">อ่านต่อ</a>';
+				echo '</div>';
+			}
+		?>
 	</div>
 	<div class="column-2">
 		<div class="box3-header">
