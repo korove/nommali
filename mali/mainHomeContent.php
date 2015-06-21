@@ -3,9 +3,11 @@
 	include("{$base_dir}database{$ds}queryCmMaster.php");
 	include("{$base_dir}mali{$ds}IMGallery{$ds}imgallery-no-jquery.php");
 // 	include "/nommali_Project/mali/IMGallery/imgallery-no-jquery.php";
+	$pathImgTopic = "img{$ds}imgTopic{$ds}";
 	gallery_thumb_height("100px");
-	gallery_echo_img("news/news1.png");
-	gallery_echo_img("news/video1.png");
+	gallery_echo_img("{$pathImgTopic}img_news_20150621_112412.png");
+	gallery_echo_img("img/imgTopic/img_news_20150621_170422.png");
+	gallery_echo_img("img/imgTopic/img_news_20150621_170511.png");
 	$debug = true;
 	
 	class CmMaster{
@@ -35,7 +37,7 @@
 		prnt($debug, 'empty($rows)' );
 	}else{
 		prnt($debug, '$rows size: ' . count($rows));
-		var_dump($rows);
+		//var_dump($rows);
 	}
 	
 ?>
@@ -66,36 +68,22 @@
 			<h2>ข่าว</h2>
 			<a href="#"><div class="more">MORE +</div></a>
 		</div>
-		<div class="box3-content1">
-			<img src="news/news1.png" height="10" width="10">
-			<p>บริษัทอุตสาหกรรมไทยได้รับรางวัลชั้นน้ำ</p>
-			<a href="#">อ่านต่อ</a>
-		</div>
-		<div class="box3-content1">
-			<img src="news/news2.png">
-			<p>บริษัทอุตสาหกรรมไทยได้รับรางวัลชั้นน้ำ</p>
-			<a href="#">อ่านต่อ</a>
-		</div>
-		<div class="box3-content1">
-			<img src="news/news3.png">
-			<p>บริษัทอุตสาหกรรมไทยได้รับรางวัลชั้นน้ำ</p>
-			<a href="#">อ่านต่อ</a>
-		</div>
-		<div class="box3-content1">
-			<img src="news/news4.png">
-			<p>บริษัทอุตสาหกรรมไทยได้รับรางวัลชั้นน้ำ</p>
-			<a href="#">อ่านต่อ</a>
-		</div>
-		<div class="box3-content1">
-			<img src="news/news5.png">
-			<p>บริษัทอุตสาหกรรมไทยได้รับรางวัลชั้นน้ำ</p>
-			<a href="#">อ่านต่อ</a>
-		</div>
-		<div class="box3-content1">
-			<img src="news/news6.png">
-			<p>บริษัทอุตสาหกรรมไทยได้รับรางวัลชั้นน้ำ</p>
-			<a href="#">อ่านต่อ</a>
-		</div>
+		<?php 
+		
+			if(!empty($rows)){
+				foreach ($rows as $row) {
+					echo '<div class="box3-content1">';
+					//$countAll = $row["count(*)"];
+					gallery_echo_img("{$pathImgTopic}{$row['image']}");
+// 					echo "<img src=\"{$pathImgTopic}{$row['image']}\">";
+					echo "<p>{$row['topic']}</p>";
+					echo '<a href="#">อ่านต่อ</a>';
+					echo '</div>';
+				}
+			}
+		
+		?>
+		
 	</div>
 	<div class="column-2">
 		<div class="box3-header">
