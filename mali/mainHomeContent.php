@@ -5,9 +5,10 @@
 // 	include "/nommali_Project/mali/IMGallery/imgallery-no-jquery.php";
 	$pathImgTopic = "img{$ds}imgTopic{$ds}";
 	gallery_thumb_height("100px");
-	gallery_echo_img("{$pathImgTopic}img_news_20150621_112412.png");
-	gallery_echo_img("img/imgTopic/img_news_20150621_170422.png");
-	gallery_echo_img("img/imgTopic/img_news_20150621_170511.png");
+// 	gallery_echo_img("{$pathImgTopic}img_news_20150621_112412.png");
+// 	gallery_echo_img("img/imgTopic/img_news_20150621_170422.png");
+// 	gallery_echo_img("img/imgTopic/img_news_20150621_170511.png");
+	
 	$debug = true;
 	$limitHomeNews = 6;
 	$limitHomeActivity = 3;
@@ -25,22 +26,15 @@
 		public $active;
 	}
 	
-	$c = new CmMaster();
-	$c->rowid = "2";
-	
-	function printTest($c){
-		echo $c-> rowid;
-	}
-	printTest($c);
 	//$rows = queryCmMasterOr($c);
 	$rows = queryCmMasterHome('news');
 	
-	if(empty($rows)){
+	/* if(empty($rows)){
 		prnt($debug, 'empty($rows)' );
 	}else{
 		prnt($debug, '$rows size: ' . count($rows));
 		//var_dump($rows);
-	}
+	} */
 	
 ?>
 </div>
