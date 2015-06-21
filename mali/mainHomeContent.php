@@ -1,10 +1,43 @@
 <div>
 <?php 
+	include("{$base_dir}database{$ds}queryCmMaster.php");
 	include("{$base_dir}mali{$ds}IMGallery{$ds}imgallery-no-jquery.php");
 // 	include "/nommali_Project/mali/IMGallery/imgallery-no-jquery.php";
 	gallery_thumb_height("100px");
 	gallery_echo_img("news/news1.png");
 	gallery_echo_img("news/video1.png");
+	$debug = true;
+	
+	class CmMaster{
+		public $rowid;
+		public $parRowId;
+		public $topic;
+		public $detail;
+		public $image;
+		public $imageThumbnail;
+		public $movie;
+		public $type;
+		public $displayHome;
+		public $active;
+	}
+	
+	$c = new CmMaster();
+	$c->rowid = "2";
+	
+	function printTest($c){
+		echo $c-> rowid;
+	}
+	printTest($c);
+	//$rows = queryCmMasterOr($c);
+	$rows = queryCmMasterHome();
+	
+	if(empty($rows)){
+		prnt($debug, 'empty($rows)' );
+	}else{
+		prnt($debug, '$rows size: ' . count($rows));
+		var_dump($rows);
+	}
+	
 ?>
 </div>
 

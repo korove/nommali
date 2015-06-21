@@ -9,7 +9,11 @@
 	// include_once("{$ds}nommali{$ds}include{$ds}function.php");
 	$root = $_SERVER['DOCUMENT_ROOT'];
 	$includePath = "nommali/include/";
+	$dbPath = "nommali/database/";
+	
    	$path = $root . $includePath ."function.php";
+   	include_once($path);
+   	$path = $root . $dbPath . "conDb.php";
    	include_once($path);
 
 ?>
